@@ -75,6 +75,16 @@ Public access test:
 
 ![Apache Public](week-06-azure-2tier-app/screenshots/apache-public-access.png)
 
+### Technologies Used
+
+- Microsoft Azure
+- Virtual Networks (VNet)
+- Subnets
+- Network Security Groups (NSG)
+- Linux Virtual Machines
+- Apache Web Server
+- SSH
+
 ## Structure
 cyber-notes
 │
