@@ -37,6 +37,44 @@ Architecture flow:
 
 Internet → Public IP → App Server → DB Server
 
+Designed and deployed a segmented Azure architecture with a public web server and a private database server using Virtual Networks and Network Security Groups.
+
+### Architecture Diagram
+
+![Azure Architecture](week-06-azure-2tier-app/screenshots/architecture-diagram.png)
+
+### Deployment Screenshots
+
+Virtual Network and Subnets
+
+![VNet](week-06-azure-2tier-app/screenshots/vnet-subnets.png)
+
+Application Server Deployment
+
+![App Server](week-06-azure-2tier-app/screenshots/app-server-vm.png)
+
+Database Server Deployment
+
+![DB Server](week-06-azure-2tier-app/screenshots/db-server-vm.png)
+
+Network Security Group Rules
+
+![App NSG](week-06-azure-2tier-app/screenshots/app-server-nsg.png)
+
+![DB NSG](week-06-azure-2tier-app/screenshots/db-server-nsg.png)
+
+### Verification
+
+Apache was verified running locally and externally.
+
+Local server test:
+
+![Apache Local Test](week-06-azure-2tier-app/screenshots/apache-local-test.png)
+
+Public access test:
+
+![Apache Public](week-06-azure-2tier-app/screenshots/apache-public-access.png)
+
 ## Structure
 cyber-notes
 │
