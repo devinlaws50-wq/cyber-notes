@@ -194,7 +194,12 @@ graph LR
 ![Terraform Plan](screenshots/week-09-terraform-plan.png)
 
 **Successful Deployment**
-![Terraform Apply](screenshots/week-09-terraform-apply-complete.png)
+
+**Terraform Apply (Running)**
+![Apply Running](screenshots/week-09-terraform-apply-running.png)
+
+**Terraform Apply (Complete)**
+![Apply Complete](screenshots/week-09-terraform-apply-complete.png)
 
 ---
 
