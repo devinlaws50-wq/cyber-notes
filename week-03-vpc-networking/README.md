@@ -1,5 +1,15 @@
 # Week 3 — AWS VPC & Network Security
 
+## Architecture Diagram
+
+![AWS VPC Architecture](screenshots/AWS-VPC.jpg)
+
+## Lab Walkthrough
+
+[Watch the full lab walkthrough on Loom](https://www.loom.com/share/a25835f7ad6c4cad99b83d215b7ee036)
+
+---
+
 ## Objective
 
 The goal of this lab was to build a secure AWS network architecture using a Virtual Private Cloud (VPC), public and private subnets, route tables, and security groups. The lab focused on understanding how traffic flows within AWS and how to apply least-privilege network design.
