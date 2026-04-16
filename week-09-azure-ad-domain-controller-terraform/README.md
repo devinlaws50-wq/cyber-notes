@@ -183,16 +183,55 @@ graph LR
 
 ## 📸 Screenshots
 
-Suggested screenshots to include:
+## 📸 Screenshots
 
-- **Terraform Deployment:** `terraform apply` output in the terminal  
-- **Project Configuration:** View of `main.tf` or folder structure in VS Code  
-- **RDP Access:** Successful login screen using `CORP\adadmin`  
-- **Active Directory Verification:** PowerShell output of `Get-ADDomain` and `Resolve-DnsName`  
+### 🏗️ Terraform Deployment
 
-Place these images under the `screenshots/` directory and reference them here as needed.
+**Terraform Initialization**
+![Terraform Init](screenshots/week-09-terraform-init.png)
+
+**Execution Plan**
+![Terraform Plan](screenshots/week-09-terraform-plan.png)
+
+**Successful Deployment**
+![Terraform Apply](screenshots/week-09-terraform-complete.png)
 
 ---
+
+### 🧱 Project Configuration
+
+**Terraform Configuration (main.tf)**
+![Main TF](screenshots/week-09-main-tf-config.png)
+
+---
+
+### 🔐 Remote Access (RDP)
+
+**RDP Connection**
+![RDP Login](screenshots/week-09-rdp-login.png)
+
+**Successful RDP Session**
+![RDP Success](screenshots/week-09-rdp-success.png)
+
+---
+
+### 🧪 Active Directory Validation
+
+**NTDS Service Running**
+![NTDS Running](screenshots/week-09-ntds-running.png)
+
+**Domain Verification**
+![Domain Controller](screenshots/week-09-domain-controller.png)
+
+**DNS Resolution**
+![DNS Resolution](screenshots/week-09-dns-resolution.png)
+
+---
+
+### 🖥️ System Verification
+
+**Server Hostname**
+![Hostname](screenshots/week-09-server-hostname.png)
 
 ## 🧠 Key Concepts Learned
 
