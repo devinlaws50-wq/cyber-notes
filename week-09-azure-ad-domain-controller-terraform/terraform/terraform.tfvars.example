@@ -1,0 +1,6 @@
+yourname       = "devin"
+location       = "eastus"
+admin_password = "UndeniableOne123!!"
+dsrm_password  = "UndeniableOne1234!!"
+domain_name    = "corp.devinlaws.com"
+domain_netbios = "CORP"
