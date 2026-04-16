@@ -145,9 +145,7 @@ week-09-azure-ad-domain-controller-terraform/
 │   ├── main.tf
 │   ├── variables.tf
 │   ├── outputs.tf
-│   ├── terraform.tfvars
-│   ├── terraform.tfstate
-│   └── .terraform/
+│   ├── terraform.tfvars.example
 ├── screenshots/
 ├── diagrams/
 └── README.md
@@ -157,20 +155,18 @@ week-09-azure-ad-domain-controller-terraform/
 
 ## 🗺️ Architecture Diagram
 
-High-level architecture of the lab environment:
-
 ```mermaid
 graph LR
 
-    User[Admin Workstation<br/>(RDP Client)]
+    User[Admin Workstation\n(RDP Client)]
     subgraph Azure
         subgraph "VNet: 10.0.0.0/16"
             subgraph "Subnet: 10.0.1.0/24"
-                DC[Windows Server 2022 VM<br/>Domain Controller<br/>corp.devinlaws.com<br/>10.0.1.4]
+                DC[Windows Server 2022 VM\nDomain Controller\ncorp.devinlaws.com\n10.0.1.4]
             end
         end
 
-        NSG[Network Security Group<br/>Allow RDP (TCP 3389)]
+        NSG[Network Security Group\nAllow RDP (TCP 3389)]
         PIP[Public IP Address]
         NIC[NIC]
     end
@@ -180,8 +176,6 @@ graph LR
     NIC --> DC
     NSG --> NIC
 ```
-
-You can export this diagram as `diagrams/azure-ad-dc-architecture.png` using a Mermaid-compatible editor or VS Code extension.
 
 ---
 
