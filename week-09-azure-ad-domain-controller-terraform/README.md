@@ -155,23 +155,23 @@ week-09-azure-ad-domain-controller-terraform/
 
 ## 🗺️ Architecture Diagram
 
-```mermaid
 graph LR
 
-    User[Admin Workstation\n(RDP Client)]
+    User["Admin Workstation<br/>(RDP Client)"]
+
     subgraph Azure
-        subgraph "VNet: 10.0.0.0/16"
-            subgraph "Subnet: 10.0.1.0/24"
-                DC[Windows Server 2022 VM\nDomain Controller\ncorp.devinlaws.com\n10.0.1.4]
+        subgraph VNet["VNet: 10.0.0.0/16"]
+            subgraph Subnet["Subnet: 10.0.1.0/24"]
+                DC["Windows Server 2022 VM<br/>Domain Controller<br/>corp.devinlaws.com<br/>10.0.1.4"]
             end
         end
 
-        NSG[Network Security Group\nAllow RDP (TCP 3389)]
-        PIP[Public IP Address]
-        NIC[NIC]
+        NSG["Network Security Group<br/>Allow RDP (TCP 3389)"]
+        PIP["Public IP Address"]
+        NIC["NIC"]
     end
 
-    User -->|RDP 3389| PIP
+    User -->|"RDP 3389"| PIP
     PIP --> NIC
     NIC --> DC
     NSG --> NIC
