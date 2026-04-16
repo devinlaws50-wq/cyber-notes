@@ -154,6 +154,7 @@ week-09-azure-ad-domain-controller-terraform/
 ---
 
 ## 🗺️ Architecture Diagram
+![Architecture Diagram](diagrams/week-09-architecture.png)
 
 ```mermaid
 graph LR
