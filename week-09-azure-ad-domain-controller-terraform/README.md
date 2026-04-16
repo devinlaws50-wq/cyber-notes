@@ -155,6 +155,7 @@ week-09-azure-ad-domain-controller-terraform/
 
 ## 🗺️ Architecture Diagram
 
+```mermaid
 graph LR
 
     User["Admin Workstation<br/>(RDP Client)"]
