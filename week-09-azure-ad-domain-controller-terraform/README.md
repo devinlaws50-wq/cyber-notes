@@ -190,8 +190,6 @@ graph LR
 
 ## 📸 Screenshots
 
-## 📸 Screenshots
-
 ### 🏗️ Terraform Deployment
 
 **Terraform Initialization**
@@ -199,8 +197,6 @@ graph LR
 
 **Execution Plan**
 ![Terraform Plan](screenshots/week-09-terraform-plan.png)
-
-**Successful Deployment**
 
 **Terraform Apply (Running)**
 ![Apply Running](screenshots/week-09-terraform-apply-running.png)
