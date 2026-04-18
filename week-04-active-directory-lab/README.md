@@ -1,12 +1,30 @@
-
 # Week 4 — Active Directory Lab (AWS)
 
-## Objective
-Build a hands-on Active Directory (AD) lab in AWS to practice common Helpdesk tasks (user creation, groups, password resets, and account unlocks) and strengthen IAM fundamentals.
+![AWS](https://img.shields.io/badge/Cloud-Amazon%20AWS-FF9900?logo=amazonaws&logoColor=white)
+![Windows Server](https://img.shields.io/badge/OS-Windows%20Server-0078D6?logo=windows&logoColor=white)
+![Active Directory](https://img.shields.io/badge/Service-Active%20Directory-0078D4?logo=microsoftazure&logoColor=white)
+![Status](https://img.shields.io/badge/Status-Completed-success)
+![License](https://img.shields.io/badge/License-Private-inactive)
+
+## 📌 Objective
+
+Build a hands-on Active Directory (AD) lab in AWS to practice common Helpdesk tasks — user creation, groups, password resets, and account unlocks — while strengthening IAM fundamentals and enterprise identity management skills.
 
 ---
 
-## Environment
+## 🛠️ Tools & Technologies
+
+- Amazon Web Services (AWS)
+- AWS EC2
+- Windows Server
+- Active Directory Domain Services (AD DS)
+- Active Directory Users and Computers (ADUC)
+- Microsoft Remote Desktop (RDP)
+
+---
+
+## 🧱 Environment
+
 - **Platform:** AWS EC2 (Windows Server)
 - **Instance Type:** t3.xlarge
 - **Access:** RDP from Mac (Microsoft Remote Desktop)
@@ -15,7 +33,7 @@ Build a hands-on Active Directory (AD) lab in AWS to practice common Helpdesk ta
 
 ---
 
-## What I Built
+## ⚙️ What I Built
 
 ### 1. Windows Server in AWS
 - Launched a Windows Server EC2 instance in existing VPC
@@ -28,7 +46,7 @@ Build a hands-on Active Directory (AD) lab in AWS to practice common Helpdesk ta
 - Verified AD tools via Server Manager → Tools
 
 ### 3. Active Directory Structure
-Created Organizational Units (OUs) to simulate company structure:
+Created Organizational Units (OUs) to simulate a company structure:
 - Employees
 - IT
 - Disabled Users
@@ -42,11 +60,12 @@ Created security groups for role-based access control:
 ### 5. User & Group Membership
 - Created test user in Active Directory
 - Added user to `Helpdesk-Users`
-- Verified group membership using **Member Of** tab
+- Verified group membership using the **Member Of** tab
 
 ---
 
-## Helpdesk Skills Practiced
+## 🔐 Helpdesk Skills Practiced
+
 - Creating AD user accounts
 - Creating security groups
 - Adding users to groups (RBAC / least privilege)
@@ -54,20 +73,20 @@ Created security groups for role-based access control:
 
 ---
 
-## Key Concepts Learned
+## 🧠 Key Concepts Learned
+
 - Active Directory manages users, groups, and access in enterprise environments
 - RBAC via group membership is preferred over direct permission assignment
 - This lab bridges cloud IAM concepts with enterprise AD fundamentals
 
 ---
 
-## Next Steps
-- Password reset and account unlock scenarios
-- Account lifecycle tasks (disable/enable)
-- (Optional) Join a second Windows client EC2 instance to the domain
-- Map actions to ServiceNow-style tickets
+## ⚠️ Cost Control
+
+Stop the EC2 instance when not in use to avoid unnecessary charges.
 
 ---
 
-## Cost Control
-Stop the EC2 instance when not in use to avoid unnecessary charges.
+## ✅ Outcome
+
+Successfully built and configured an Active Directory Domain Controller on AWS EC2, practicing real-world Helpdesk and identity management tasks in an enterprise-style environment.
