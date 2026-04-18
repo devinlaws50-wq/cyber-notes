@@ -14,6 +14,13 @@ This lab builds on Week 8 by extending Infrastructure as Code (IaC) into identit
 
 ---
 
+## 🎥 Walkthrough
+
+[![Watch the Walkthrough on Loom](https://img.shields.io/badge/Loom-Watch%20Walkthrough-625DF5?logo=loom&logoColor=white)](https://www.loom.com/share/4d86d952dc104aa296dde9d78cd17249)
+
+---
+
+
 ## 🛠️ Tools & Technologies
 
 - Terraform
