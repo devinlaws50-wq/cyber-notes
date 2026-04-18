@@ -34,63 +34,19 @@ I'm a Help Desk Analyst resolving 40+ incidents per day using ServiceNow, Active
 
 ## 🔐 Lab Projects
 
-This repository documents 8 weeks of real, hands-on cloud and security labs — building from foundational cloud concepts up through infrastructure-as-code on Azure.
+9 weeks of hands-on cloud and security labs — building from foundational cloud concepts up through infrastructure-as-code on Azure.
 
----
-
-### Week 1 — Cloud Fundamentals
-Explored core AWS concepts including global infrastructure, regions, availability zones, S3 storage, and EC2 compute basics.
-
-**Key Skills:** `AWS` `S3` `EC2` `Cloud Concepts` `Regions & AZs`
-
----
-
-### Week 2 — Identity & Access Management (IAM)
-Built out AWS IAM from scratch — creating users, groups, and roles, writing policies, and applying least-privilege access principles.
-
-**Key Skills:** `AWS IAM` `Users & Groups` `IAM Roles` `Policy Documents` `Least Privilege`
-
----
-
-### Week 3 — VPC Networking
-Designed and deployed a custom AWS Virtual Private Cloud with public and private subnets, route tables, an internet gateway, and security group rules.
-
-**Key Skills:** `AWS VPC` `Subnets` `Route Tables` `Internet Gateway` `Security Groups`
-
----
-
-### Week 4 — Active Directory Lab
-Set up an on-premises Active Directory environment, configured organizational units, managed users and groups, and applied Group Policy Objects (GPOs).
-
-**Key Skills:** `Active Directory` `OUs` `User & Group Management` `Group Policy (GPO)` `Windows Server`
-
----
-
-### Week 5 — Azure Static Website
-Deployed a static website using Azure Blob Storage, configured public access, and enabled static site hosting through the Azure portal.
-
-**Key Skills:** `Azure Blob Storage` `Static Site Hosting` `Azure Portal` `Public Access Configuration`
-
----
-
-### Week 6 — Azure 2-Tier Architecture
-Built a two-tier application architecture on Azure with a VNet, separated public and private subnets, Network Security Groups (NSGs), and an Apache web server accessed over SSH.
-
-**Key Skills:** `Azure VNet` `NSGs` `Public/Private Subnets` `Apache` `SSH`
-
----
-
-### Week 7 — Azure Key Vault & Managed Identity
-Implemented Azure Key Vault for secret management and configured managed identities to allow secure, passwordless access to secrets from Azure resources.
-
-**Key Skills:** `Azure Key Vault` `Managed Identity` `Secret Management` `Azure RBAC` `Zero-Trust Principles`
-
----
-
-### Week 8 — Terraform on Azure (IaC)
-Wrote Terraform configurations using the Azure provider to provision a full stack — resource groups, virtual networks, and VMs — with structured outputs and reusable modules.
-
-**Key Skills:** `Terraform` `Infrastructure as Code` `Azure Provider` `Resource Groups` `VMs & Outputs`
+| # | Lab | Platform | Key Topics | Walkthrough |
+|---|-----|----------|------------|-------------|
+| [Week 1](week-01-cloud-basics/README.md) | Cloud Basics & Shared Responsibility | AWS | Cloud fundamentals, Shared Responsibility Model | — |
+| [Week 2](week-02-iam/README.md) | IAM & Identity Security | AWS | IAM users/roles, least privilege, STS, policy debugging | — |
+| [Week 3](week-03-vpc-networking/README.md) | VPC Networking | AWS | VPC, subnets, route tables, internet gateway, security groups | [![Loom](https://img.shields.io/badge/Loom-Watch-625DF5?logo=loom&logoColor=white)](https://www.loom.com/share/a25835f7ad6c4cad99b83d215b7ee036) |
+| [Week 4](week-04-active-directory-lab/README.md) | Active Directory Lab | AWS + Windows Server | AD DS, OUs, RBAC groups, ADUC, helpdesk tasks | — |
+| [Week 5](week-05-azure-static-website/README.md) | Azure Static Website | Azure | Blob Storage, static site hosting, public endpoints | — |
+| [Week 6](week-06-azure-2tier-app/README.md) | Azure 2-Tier Infrastructure | Azure | VNet, NSGs, public/private subnets, Apache, Ubuntu | — |
+| [Week 7](week-07-azure-keyvault-identity/README.md) | Azure Key Vault + Managed Identity | Azure | Key Vault, Managed Identity, Entra ID, RBAC, zero-trust | — |
+| [Week 8](week-08-terraform-azure-stack/README.md) | Terraform Azure Stack | Azure + Terraform | IaC, Terraform lifecycle, Azure provider, state management | — |
+| [Week 9](week-09-azure-ad-domain-controller-terraform/README.md) | Azure AD Domain Controller (Terraform) | Azure + Terraform | AD DS automation, Custom Script Extension, DNS, IaC + identity | [![Loom](https://img.shields.io/badge/Loom-Watch-625DF5?logo=loom&logoColor=white)](https://www.loom.com/share/4d86d952dc104aa296dde9d78cd17249) |
 
 ---
 
