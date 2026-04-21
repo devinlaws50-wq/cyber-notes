@@ -132,52 +132,60 @@ Configured a monthly budget with email alerting:
 
 ## 📸 Screenshots
 
-### 🏗️ Resource Group
+### 🏗️ Project Structure
 
-**Resource Group: rg-lab10-gov-devin**
-![Resource Group](screenshots/week-10-resource-group.png)
+**Lab Overview — Week 10 Project Structure**
+![Project Structure](screenshots/week10-01-project-structure.jpg)
+
+---
+
+### 🗂️ Resource Group
+
+**Resource Group Created: rg-lab10-gov-devin**
+![Resource Group](screenshots/week10-02-resource-group-created.jpg)
 
 ---
 
 ### 👤 User Creation
 
-**Junior Developer User (Microsoft Entra ID)**
-![User Creation](screenshots/week-10-user-creation.png)
+**Junior Developer User Created (Microsoft Entra ID)**
+![Junior User Created](screenshots/week10-03-junior-user-created.jpg)
 
 ---
 
 ### 🔐 RBAC Assignment
 
 **Reader Role Assigned at Resource Group Scope**
-![RBAC Assignment](screenshots/week-10-rbac-assignment.png)
+![RBAC Reader Assigned](screenshots/week10-04-rbac-reader-assigned.jpg)
 
 ---
 
 ### 🚫 RBAC Validation
 
 **Access Denied — Junior User Blocked from Creating Resources**
-![RBAC Denied](screenshots/week-10-rbac-denied.png)
+![RBAC Access Denied](screenshots/week10-05-rbac-access-denied.jpg)
 
 ---
 
-### 📋 Azure Policy
+### 📋 Azure Policy Assignment
 
 **Policy Assignment — Allowed VM Size SKUs**
-![Policy Assignment](screenshots/week-10-policy-assignment.png)
+![Policy Assigned](screenshots/week10-06-policy-assigned.jpg)
 
 ---
 
-### 🚫 Policy Validation
+### 🚫 Policy Enforcement
 
-**Deployment Blocked — Disallowed VM Size Rejected**
-![Policy Blocked](screenshots/week-10-policy-blocked.png)
+**Deployment Blocked — Disallowed VM Size Rejected by Policy**
+![Policy Enforced](screenshots/week10-11-policy-enforced.jpg)
 
 ---
 
 ### 💰 Cost Management
 
 **Budget Setup — $50/month with 80% Alert**
-![Budget Setup](screenshots/week-10-budget-setup.png)
+
+> 📷 Screenshot coming soon
 
 ---
 
@@ -225,13 +233,13 @@ week-10-azure-governance/
 ├── diagrams/
 │   └── week-10-architecture.png
 └── screenshots/
-    ├── week-10-resource-group.png
-    ├── week-10-user-creation.png
-    ├── week-10-rbac-assignment.png
-    ├── week-10-rbac-denied.png
-    ├── week-10-policy-assignment.png
-    ├── week-10-policy-blocked.png
-    └── week-10-budget-setup.png
+    ├── week10-01-project-structure.jpg
+    ├── week10-02-resource-group-created.jpg
+    ├── week10-03-junior-user-created.jpg
+    ├── week10-04-rbac-reader-assigned.jpg
+    ├── week10-05-rbac-access-denied.jpg
+    ├── week10-06-policy-assigned.jpg
+    └── week10-11-policy-enforced.jpg
 ```
 
 ---
