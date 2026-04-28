@@ -41,14 +41,14 @@ I'm a Help Desk Analyst resolving 40+ incidents per day using ServiceNow, Active
 | [Week 1](week-01-cloud-basics/README.md) | Cloud Basics & Shared Responsibility | AWS | Cloud fundamentals, Shared Responsibility Model | — |
 | [Week 2](week-02-iam/README.md) | IAM & Identity Security | AWS | IAM users/roles, least privilege, STS, policy debugging | — |
 | [Week 3](week-03-vpc-networking/README.md) | VPC Networking | AWS | VPC, subnets, route tables, internet gateway, security groups | [![Loom](https://img.shields.io/badge/Loom-Watch-625DF5?logo=loom&logoColor=white)](https://www.loom.com/share/a25835f7ad6c4cad99b83d215b7ee036) |
-| [Week 4](week-04-active-directory-lab/README.md) | Active Directory Lab | AWS + Windows Server | AD DS, OUs, RBAC groups, ADUC, helpdesk tasks | — |
-| [Week 5](week-05-azure-static-website/README.md) | Azure Static Website | Azure | Blob Storage, static site hosting, public endpoints | — |
-| [Week 6](week-06-azure-2tier-app/README.md) | Azure 2-Tier Infrastructure | Azure | VNet, NSGs, public/private subnets, Apache, Ubuntu | — |
-| [Week 7](week-07-azure-keyvault-identity/README.md) | Azure Key Vault + Managed Identity | Azure | Key Vault, Managed Identity, Entra ID, RBAC, zero-trust | — |
-| [Week 8](week-08-terraform-azure-stack/README.md) | Terraform Azure Stack | Azure + Terraform | IaC, Terraform lifecycle, Azure provider, state management | — |
-| [Week 9](week-09-azure-ad-domain-controller-terraform/README.md) | Azure AD Domain Controller (Terraform) | Azure + Terraform | AD DS automation, Custom Script Extension, DNS, IaC + identity | [![Loom](https://img.shields.io/badge/Loom-Watch-625DF5?logo=loom&logoColor=white)](https://www.loom.com/share/4d86d952dc104aa296dde9d78cd17249) |
-| [Week 10](week-10-azure-governance/README.md) | Azure Governance & Security Hardening | Azure | RBAC, Azure Policy, Cost Management, Entra ID, governance controls | — |
-| [Week 11](week-11-wireshark-network-analysis/README.md) | Wireshark & Network Traffic Analysis | Wireshark | TCP three-way handshake, display filters, packet inspection, DNS, HTTP/HTTPS | — |
+| [Week 4](week-04-wireshark-network-analysis/README.md) | Wireshark & Network Traffic Analysis | Wireshark | TCP three-way handshake, display filters, packet inspection, DNS, HTTP/HTTPS | — |
+| [Week 5](week-05-active-directory-lab/README.md) | Active Directory Lab | AWS + Windows Server | AD DS, OUs, RBAC groups, ADUC, helpdesk tasks | — |
+| [Week 6](week-06-azure-static-website/README.md) | Azure Static Website | Azure | Blob Storage, static site hosting, public endpoints | — |
+| [Week 7](week-07-azure-2tier-app/README.md) | Azure 2-Tier Infrastructure | Azure | VNet, NSGs, public/private subnets, Apache, Ubuntu | — |
+| [Week 8](week-08-azure-keyvault-identity/README.md) | Azure Key Vault + Managed Identity | Azure | Key Vault, Managed Identity, Entra ID, RBAC, zero-trust | — |
+| [Week 9](week-09-terraform-azure-stack/README.md) | Terraform Azure Stack | Azure + Terraform | IaC, Terraform lifecycle, Azure provider, state management | — |
+| [Week 10](week-10-azure-ad-domain-controller-terraform/README.md) | Azure AD Domain Controller (Terraform) | Azure + Terraform | AD DS automation, Custom Script Extension, DNS, IaC + identity | [![Loom](https://img.shields.io/badge/Loom-Watch-625DF5?logo=loom&logoColor=white)](https://www.loom.com/share/4d86d952dc104aa296dde9d78cd17249) |
+| [Week 11](week-11-azure-governance/README.md) | Azure Governance & Security Hardening | Azure | RBAC, Azure Policy, Cost Management, Entra ID, governance controls | — |
 
 ---
 
