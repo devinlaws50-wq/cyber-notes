@@ -34,7 +34,7 @@ I'm a Help Desk Analyst resolving 40+ incidents per day using ServiceNow, Active
 
 ## 🔐 Lab Projects
 
-10 weeks of hands-on cloud and security labs — building from foundational cloud concepts up through governance, security hardening, and infrastructure-as-code on Azure.
+11 weeks of hands-on cloud and security labs — building from foundational cloud concepts up through governance, security hardening, and infrastructure-as-code on Azure.
 
 | # | Lab | Platform | Key Topics | Walkthrough |
 |---|-----|----------|------------|-------------|
@@ -48,6 +48,7 @@ I'm a Help Desk Analyst resolving 40+ incidents per day using ServiceNow, Active
 | [Week 8](week-08-terraform-azure-stack/README.md) | Terraform Azure Stack | Azure + Terraform | IaC, Terraform lifecycle, Azure provider, state management | — |
 | [Week 9](week-09-azure-ad-domain-controller-terraform/README.md) | Azure AD Domain Controller (Terraform) | Azure + Terraform | AD DS automation, Custom Script Extension, DNS, IaC + identity | [![Loom](https://img.shields.io/badge/Loom-Watch-625DF5?logo=loom&logoColor=white)](https://www.loom.com/share/4d86d952dc104aa296dde9d78cd17249) |
 | [Week 10](week-10-azure-governance/README.md) | Azure Governance & Security Hardening | Azure | RBAC, Azure Policy, Cost Management, Entra ID, governance controls | — |
+| [Week 11](week-11-wireshark-network-analysis/README.md) | Wireshark & Network Traffic Analysis | Wireshark | TCP three-way handshake, display filters, packet inspection, DNS, HTTP/HTTPS | — |
 
 ---
 
