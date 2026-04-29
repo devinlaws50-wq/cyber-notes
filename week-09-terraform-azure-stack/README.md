@@ -45,7 +45,7 @@ week-09-terraform-azure-stack/
 ├── terraform.tfstate
 ├── .gitignore
 └── diagrams/
-    └── week9-architecture-diagram.png
+    └── week-09-architecture-diagram.png
 ```
 
 ---
@@ -70,7 +70,7 @@ terraform destroy
 
 ## 🗺️ Architecture Diagram
 
-![Architecture Diagram](./diagrams/week9-architecture-diagram.png)
+![Architecture Diagram](./diagrams/week-09-architecture-diagram.png)
 
 ---
 
