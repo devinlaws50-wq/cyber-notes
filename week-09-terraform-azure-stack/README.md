@@ -1,4 +1,4 @@
-# Week 8 — Terraform Azure Infrastructure Deployment
+# Week 9 — Terraform Azure Infrastructure Deployment
 
 ![Terraform](https://img.shields.io/badge/IaC-Terraform-7B42F6?logo=terraform&logoColor=white)
 ![Azure](https://img.shields.io/badge/Cloud-Microsoft%20Azure-0078D4?logo=microsoftazure&logoColor=white)
@@ -37,7 +37,7 @@ Using Terraform, the following resources were provisioned in Azure:
 ## 📂 Project Structure
 
 ```text
-week-08-terraform-azure-stack/
+week-09-terraform-azure-stack/
 ├── main.tf
 ├── outputs.tf
 ├── terraform.tfvars
@@ -45,7 +45,7 @@ week-08-terraform-azure-stack/
 ├── terraform.tfstate
 ├── .gitignore
 └── diagrams/
-    └── week8-architecture-diagram.png
+    └── week9-architecture-diagram.png
 ```
 
 ---
@@ -70,7 +70,7 @@ terraform destroy
 
 ## 🗺️ Architecture Diagram
 
-![Architecture Diagram](./diagrams/week8-architecture-diagram.png)
+![Architecture Diagram](./diagrams/week9-architecture-diagram.png)
 
 ---
 
@@ -78,7 +78,7 @@ terraform destroy
 
 Resources were successfully deployed and verified in the Azure Portal within the resource group:
 
-`rg-week8-terraform-lab`
+`rg-week9-terraform-lab`
 
 ---
 
