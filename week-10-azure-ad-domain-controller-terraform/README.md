@@ -1,4 +1,4 @@
-# Week 9 – Azure Active Directory Domain Controller (Terraform)
+# Week 10 – Azure Active Directory Domain Controller (Terraform)
 
 ![Terraform](https://img.shields.io/badge/IaC-Terraform-7B42F6?logo=terraform&logoColor=white)
 ![Azure](https://img.shields.io/badge/Cloud-Microsoft%20Azure-0078D4?logo=microsoftazure&logoColor=white)
@@ -147,7 +147,7 @@ These checks confirmed:
 ## 📂 Project Structure
 
 ```text
-week-09-azure-ad-domain-controller-terraform/
+week-10-azure-ad-domain-controller-terraform/
 ├── terraform/
 │   ├── main.tf
 │   ├── variables.tf
@@ -269,7 +269,7 @@ You (or anyone else) can reuse this lab to stand up a fresh AD DS environment in
 
    ```bash
    git clone <your-repo-url>
-   cd week-09-azure-ad-domain-controller-terraform/terraform
+   cd week-10-azure-ad-domain-controller-terraform/terraform
    ```
 
 2. **Configure Azure authentication**
@@ -295,7 +295,7 @@ You (or anyone else) can reuse this lab to stand up a fresh AD DS environment in
    domain_netbios = "CORP"
    ```
 
-   - Ensure passwords meet Azure’s complexity requirements.  
+   - Ensure passwords meet Azure's complexity requirements.  
    - Optionally change the region and domain naming to match your use case.
 
 4. **Initialize and deploy**
@@ -315,7 +315,7 @@ You (or anyone else) can reuse this lab to stand up a fresh AD DS environment in
      ```
 
    - Connect via RDP using the public IP and domain credentials.  
-   - Re-run the validation PowerShell commands in the “Validation & Verification” section.
+   - Re-run the validation PowerShell commands in the "Validation & Verification" section.
 
 6. **Clean up when finished**
 
