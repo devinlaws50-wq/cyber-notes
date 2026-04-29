@@ -1,4 +1,4 @@
-# Week 10 – Azure Governance & Security Hardening
+# Week 11 – Azure Governance & Security Hardening
 
 ![Azure](https://img.shields.io/badge/Cloud-Microsoft%20Azure-0078D4?logo=microsoftazure&logoColor=white)
 ![EntraID](https://img.shields.io/badge/Identity-Microsoft%20Entra%20ID-0078D4?logo=microsoftazure&logoColor=white)
@@ -134,7 +134,7 @@ Configured a monthly budget with email alerting:
 
 ### 🏗️ Project Structure
 
-**Lab Overview — Week 10 Project Structure**
+**Lab Overview — Week 11 Project Structure**
 ![Project Structure](screenshots/week10-01-project-structure.jpg)
 
 ---
@@ -228,7 +228,7 @@ This lab reflects real-world cloud operations where:
 ## 📂 Project Structure
 
 ```text
-week-10-azure-governance/
+week-11-azure-governance/
 ├── README.md
 ├── diagrams/
 │   └── week-10-architecture.png
