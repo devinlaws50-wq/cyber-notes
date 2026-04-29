@@ -1,4 +1,4 @@
-# Week 7 — Azure Key Vault + Managed Identity
+# Week 8 — Azure Key Vault + Managed Identity
 
 ![Azure](https://img.shields.io/badge/Cloud-Microsoft%20Azure-0078D4?logo=microsoftazure&logoColor=white)
 ![Key Vault](https://img.shields.io/badge/Service-Azure%20Key%20Vault-0078D4?logo=microsoftazure&logoColor=white)
@@ -44,7 +44,7 @@ Secure Secret Retrieval
 - Azure Virtual Machine (`app-server`)
 - Azure SQL Server
 - Azure SQL Database (`appdb`)
-- Azure Key Vault (`week7-keyvault`)
+- Azure Key Vault (`week8-keyvault`)
 - System-Assigned Managed Identity on the VM
 - RBAC role assignment (Key Vault Secrets User)
 - Key Vault secret for database credentials
@@ -99,7 +99,7 @@ Using the Azure CLI and Managed Identity authentication, the VM successfully ret
 
 ```bash
 az keyvault secret show \
-  --vault-name week7-keyvault \
+  --vault-name week8-keyvault \
   --name db-password \
   --query value -o tsv
 ```
