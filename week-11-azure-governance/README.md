@@ -126,7 +126,7 @@ Configured a monthly budget with email alerting:
 
 ## 🗺️ Architecture Diagram
 
-![Architecture Diagram](diagrams/week-10-architecture.png)
+![Architecture Diagram](diagrams/week-11-architecture.png)
 
 ---
 
