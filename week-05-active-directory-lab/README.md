@@ -1,4 +1,4 @@
-# Week 4 — Active Directory Lab (AWS)
+# Week 5 — Active Directory Lab (AWS)
 
 ![AWS](https://img.shields.io/badge/Cloud-Amazon%20AWS-FF9900?logo=amazonaws&logoColor=white)
 ![Windows Server](https://img.shields.io/badge/OS-Windows%20Server-0078D6?logo=windows&logoColor=white)
