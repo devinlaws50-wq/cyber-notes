@@ -1,4 +1,4 @@
-# Week 5 — Azure Static Website (Blob Storage)
+# Week 6 — Azure Static Website (Blob Storage)
 
 ![Azure](https://img.shields.io/badge/Cloud-Microsoft%20Azure-0078D4?logo=microsoftazure&logoColor=white)
 ![Blob Storage](https://img.shields.io/badge/Service-Azure%20Blob%20Storage-0078D4?logo=microsoftazure&logoColor=white)
