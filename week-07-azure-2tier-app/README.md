@@ -1,4 +1,4 @@
-# Week 6 — Azure 2-Tier Infrastructure Deployment
+# Week 7 — Azure 2-Tier Infrastructure Deployment
 
 ![Azure](https://img.shields.io/badge/Cloud-Microsoft%20Azure-0078D4?logo=microsoftazure&logoColor=white)
 ![Ubuntu](https://img.shields.io/badge/OS-Ubuntu%20Linux-E95420?logo=ubuntu&logoColor=white)
