@@ -1,4 +1,4 @@
-# Week 11 – Wireshark & Network Traffic Analysis
+# Week 4 – Wireshark & Network Traffic Analysis
 
 ![Wireshark](https://img.shields.io/badge/Tool-Wireshark-1679A7?logo=wireshark&logoColor=white)
 ![Protocol](https://img.shields.io/badge/Protocol-TCP%20%2F%20DNS%20%2F%20HTTP-blue)
@@ -110,7 +110,7 @@ This confirmed a complete, clean TCP session lifecycle: **connect → transfer �
 
 ## 🗺️ Architecture Diagram
 
-![Architecture Diagram](diagrams/week-11-architecture.png)
+![Architecture Diagram](diagrams/week-04-architecture.png)
 
 ---
 
@@ -119,7 +119,7 @@ This confirmed a complete, clean TCP session lifecycle: **connect → transfer �
 ### 🦈 Wireshark Capture — TCP Three-Way Handshake
 
 **Filter: `tcp.flags.syn == 1` — Packets 872, 873, 874 highlighted**
-![TCP Three-Way Handshake](screenshots/week11-tcp-handshake.jpg)
+![TCP Three-Way Handshake](screenshots/week04-tcp-handshake.jpg)
 
 ---
 
@@ -148,12 +148,12 @@ This confirmed a complete, clean TCP session lifecycle: **connect → transfer �
 ## 📂 Project Structure
 
 ```text
-week-11-wireshark-network-analysis/
+week-04-wireshark-network-analysis/
 ├── README.md
 ├── diagrams/
-│   └── week-11-architecture.png
+│   └── week-04-architecture.png
 └── screenshots/
-    └── week11-tcp-handshake.jpg
+    └── week04-tcp-handshake.jpg
 ```
 
 ---
