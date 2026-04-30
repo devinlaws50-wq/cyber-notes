@@ -161,7 +161,7 @@ week-10-azure-ad-domain-controller-terraform/
 ---
 
 ## 🗺️ Architecture Diagram
-![Architecture Diagram](diagrams/week-09-architecture.png)
+![Architecture Diagram](diagrams/week-10-architecture.png)
 
 ```mermaid
 graph LR
@@ -193,53 +193,53 @@ graph LR
 ### 🏗️ Terraform Deployment
 
 **Terraform Initialization**
-![Terraform Init](screenshots/week-09-terraform-init.png)
+![Terraform Init](screenshots/week-10-terraform-init.png)
 
 **Execution Plan**
-![Terraform Plan](screenshots/week-09-terraform-plan.png)
+![Terraform Plan](screenshots/week-10-terraform-plan.png)
 
 **Terraform Apply (Running)**
-![Apply Running](screenshots/week-09-terraform-apply-running.png)
+![Apply Running](screenshots/week-10-terraform-apply-running.png)
 
 **Terraform Apply (Complete)**
-![Apply Complete](screenshots/week-09-terraform-apply-complete.png)
+![Apply Complete](screenshots/week-10-terraform-apply-complete.png)
 
 ---
 
 ### 🧱 Project Configuration
 
 **Terraform Configuration (main.tf)**
-![Main TF](screenshots/week-09-main-tf-config.png)
+![Main TF](screenshots/week-10-main-tf-config.png)
 
 ---
 
 ### 🔐 Remote Access (RDP)
 
 **RDP Connection**
-![RDP Login](screenshots/week-09-rdp-login.png)
+![RDP Login](screenshots/week-10-rdp-login.png)
 
 **Successful RDP Session**
-![RDP Success](screenshots/week-09-rdp-success.png)
+![RDP Success](screenshots/week-10-rdp-success.png)
 
 ---
 
 ### 🧪 Active Directory Validation
 
 **NTDS Service Running**
-![NTDS Running](screenshots/week-09-ntds-running.png)
+![NTDS Running](screenshots/week-10-ntds-running.png)
 
 **Domain Verification**
-![Domain Controller](screenshots/week-09-domain-controller.png)
+![Domain Controller](screenshots/week-10-domain-controller.png)
 
 **DNS Resolution**
-![DNS Resolution](screenshots/week-09-dns-resolution.png)
+![DNS Resolution](screenshots/week-10-dns-resolution.png)
 
 ---
 
 ### 🖥️ System Verification
 
 **Server Hostname**
-![Hostname](screenshots/week-09-server-hostname.png)
+![Hostname](screenshots/week-10-server-hostname.png)
 
 ## 🧠 Key Concepts Learned
 

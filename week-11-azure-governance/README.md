@@ -231,7 +231,7 @@ This lab reflects real-world cloud operations where:
 week-11-azure-governance/
 ├── README.md
 ├── diagrams/
-│   └── week-10-architecture.png
+│   └── week-11-architecture.png
 └── screenshots/
     ├── week10-01-project-structure.jpg
     ├── week10-02-resource-group-created.jpg
