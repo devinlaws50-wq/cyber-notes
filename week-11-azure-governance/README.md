@@ -135,49 +135,49 @@ Configured a monthly budget with email alerting:
 ### 🏗️ Project Structure
 
 **Lab Overview — Week 11 Project Structure**
-![Project Structure](screenshots/week10-01-project-structure.jpg)
+![Project Structure](screenshots/week-11-01-project-structure.jpg)
 
 ---
 
 ### 🗂️ Resource Group
 
 **Resource Group Created: rg-lab10-gov-devin**
-![Resource Group](screenshots/week10-02-resource-group-created.jpg)
+![Resource Group](screenshots/week-11-02-resource-group-created.jpg)
 
 ---
 
 ### 👤 User Creation
 
 **Junior Developer User Created (Microsoft Entra ID)**
-![Junior User Created](screenshots/week10-03-junior-user-created.jpg)
+![Junior User Created](screenshots/week-11-03-junior-user-created.jpg)
 
 ---
 
 ### 🔐 RBAC Assignment
 
 **Reader Role Assigned at Resource Group Scope**
-![RBAC Reader Assigned](screenshots/week10-04-rbac-reader-assigned.jpg)
+![RBAC Reader Assigned](screenshots/week-11-04-rbac-reader-assigned.jpg)
 
 ---
 
 ### 🚫 RBAC Validation
 
 **Access Denied — Junior User Blocked from Creating Resources**
-![RBAC Access Denied](screenshots/week10-05-rbac-access-denied.jpg)
+![RBAC Access Denied](screenshots/week-11-05-rbac-access-denied.jpg)
 
 ---
 
 ### 📋 Azure Policy Assignment
 
 **Policy Assignment — Allowed VM Size SKUs**
-![Policy Assigned](screenshots/week10-06-policy-assigned.jpg)
+![Policy Assigned](screenshots/week-11-06-policy-assigned.jpg)
 
 ---
 
 ### 🚫 Policy Enforcement
 
 **Deployment Blocked — Disallowed VM Size Rejected by Policy**
-![Policy Enforced](screenshots/week10-11-policy-enforced.jpg)
+![Policy Enforced](screenshots/week-11-11-policy-enforced.jpg)
 
 ---
 
@@ -233,13 +233,13 @@ week-11-azure-governance/
 ├── diagrams/
 │   └── week-11-architecture.png
 └── screenshots/
-    ├── week10-01-project-structure.jpg
-    ├── week10-02-resource-group-created.jpg
-    ├── week10-03-junior-user-created.jpg
-    ├── week10-04-rbac-reader-assigned.jpg
-    ├── week10-05-rbac-access-denied.jpg
-    ├── week10-06-policy-assigned.jpg
-    └── week10-11-policy-enforced.jpg
+    ├── week-11-01-project-structure.jpg
+    ├── week-11-02-resource-group-created.jpg
+    ├── week-11-03-junior-user-created.jpg
+    ├── week-11-04-rbac-reader-assigned.jpg
+    ├── week-11-05-rbac-access-denied.jpg
+    ├── week-11-06-policy-assigned.jpg
+    └── week-11-11-policy-enforced.jpg
 ```
 
 ---
