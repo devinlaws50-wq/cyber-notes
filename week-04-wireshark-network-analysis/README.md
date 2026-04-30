@@ -119,7 +119,7 @@ This confirmed a complete, clean TCP session lifecycle: **connect → transfer �
 ### 🦈 Wireshark Capture — TCP Three-Way Handshake
 
 **Filter: `tcp.flags.syn == 1` — Packets 872, 873, 874 highlighted**
-![TCP Three-Way Handshake](screenshots/week04-tcp-handshake.jpg)
+![TCP Three-Way Handshake](screenshots/week-04-tcp-handshake.jpg)
 
 ---
 
@@ -153,7 +153,7 @@ week-04-wireshark-network-analysis/
 ├── diagrams/
 │   └── week-04-architecture.png
 └── screenshots/
-    └── week04-tcp-handshake.jpg
+    └── week-04-tcp-handshake.jpg
 ```
 
 ---

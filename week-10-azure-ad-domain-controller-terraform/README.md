@@ -10,7 +10,7 @@
 
 Deploy a Windows Server 2022 virtual machine in Microsoft Azure and automatically configure it as an Active Directory Domain Controller using Terraform and an Azure VM Custom Script Extension.
 
-This lab builds on Week 8 by extending Infrastructure as Code (IaC) into identity management, simulating a real-world enterprise scenario where infrastructure and directory services are deployed together and managed as code.
+This lab builds on Week 9 by extending Infrastructure as Code (IaC) into identity management, simulating a real-world enterprise scenario where infrastructure and directory services are deployed together and managed as code.
 
 ---
 
@@ -154,14 +154,12 @@ week-10-azure-ad-domain-controller-terraform/
 │   ├── outputs.tf
 │   ├── terraform.tfvars.example
 ├── screenshots/
-├── diagrams/
 └── README.md
 ```
 
 ---
 
 ## 🗺️ Architecture Diagram
-![Architecture Diagram](diagrams/week-10-architecture.png)
 
 ```mermaid
 graph LR
