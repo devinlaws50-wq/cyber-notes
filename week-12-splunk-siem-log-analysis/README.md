@@ -15,7 +15,7 @@
 
 I recorded a short video walkthrough of this lab that covers the Azure deployment, Splunk setup, log ingestion, and the final Linux Security Monitoring dashboard.
 
-[![Watch the Loom walkthrough](./screenshots/15-final-security-dashboard.png)](https://www.loom.com/share/REPLACE_WITH_YOUR_LOOM_LINK)
+[![Watch the Loom walkthrough](./screenshots/15-final-security-dashboard.png)](https://www.loom.com/share/092386194773439ba6963587796b24fb)
 
 ## Azure VM Overview
 
