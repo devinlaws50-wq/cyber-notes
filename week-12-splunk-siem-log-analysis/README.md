@@ -133,6 +133,8 @@ ssh -i splunk-server_key.pem azureuser@52.255.197.150
 
 ![SSH Connection Success](screenshots/02-ssh-success.png)
 
+---
+
 ### Splunk Boot-Start Configuration
 
 Splunk was configured to start automatically on boot:
@@ -207,7 +209,10 @@ The final dashboard presents authentication and administrative activity in a SOC
 
 Key Splunk Searches
 
-Monitor All Authentication Logs
+### Monitor All Authentication Logs
+
+```spl
+
 source="/var/log/auth.log"
 Displays all authentication-related events being written to /var/log/auth.log.
 
