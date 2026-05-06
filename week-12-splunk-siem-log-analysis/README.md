@@ -124,8 +124,10 @@ This project simulates foundational Security Operations Center (SOC) workflows c
 ## SSH Access to the Ubuntu Server
 
 After deploying the VM, secure remote access was established using SSH with PEM key authentication.
+```bash
 chmod 400 splunk-server_key.pem
 ssh -i splunk-server_key.pem azureuser@52.255.197.150
+```
 
 ## SSH Connection to Ubuntu Server
 ### SSH Connection to Ubuntu Server
@@ -135,7 +137,9 @@ ssh -i splunk-server_key.pem azureuser@52.255.197.150
 ## Splunk Boot-Start Configuration
 
 Splunk was configured to start automatically on boot:
+```bash
 sudo /opt/splunk/bin/splunk enable boot-start
+```
 ### Splunk Boot-Start Configuration
 
 ![Splunk Boot-Start Configuration](screenshots/03-splunk-install-bootstart.png)
@@ -158,16 +162,20 @@ Once authenticated, the Splunk web interface and Search & Reporting app were ava
 ## Linux Auth Log Source Type Configuration
 
 The Linux authentication log was added as a monitored input source, and Splunk identified the source type as linux_secure.
+```text
 Source: /var/log/auth.log
 Sourcetype: linux_secure
 Index: main
 Host: splunk-server
+```
 ![Linux Auth Log Source Type Configuration](screenshots/07-linux-auth-log-input.png)
 
 ## Log Ingestion Verification
 
 Splunk searches confirmed that events from /var/log/auth.log were being indexed successfully.
+```spl
 index=* host=splunk-server
+```
 ![Log Ingestion Verified](screenshots/08-log-ingestion-success.png)
 
 ## Security Events Generated in Splunk
@@ -208,22 +216,30 @@ The final dashboard presents authentication and administrative activity in a SOC
 ## Key Splunk Searches
 
 ## Monitor All Authentication Logs
+```spl
 source="/var/log/auth.log"
+```
 Displays all authentication-related events being written to /var/log/auth.log.
 
 ## Monitor Sudo Activity
+```spl
 source="/var/log/auth.log" sudo
 | table _time host source sourcetype _raw
+```
 Tracks sudo-related activity, including privileged commands and root session activity.
 
 ## Monitor Failed Login Attempts
+```spl
 source="/var/log/auth.log" ("FAILED SU" OR "authentication failure" OR "failed password")
 | table _time host _raw
+```
 Used to detect failed authentication attempts and failed privilege escalation events.
 
 ## Monitor User Management Activity
+```spl
 source="/var/log/auth.log" (useradd OR userdel OR passwd)
 | table _time host _raw
+```
 Helps identify account creation, password change, and account deletion activity.
 
 ## Security Events Observed
