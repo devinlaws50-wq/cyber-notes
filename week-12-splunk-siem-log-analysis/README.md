@@ -129,7 +129,6 @@ chmod 400 splunk-server_key.pem
 ssh -i splunk-server_key.pem azureuser@52.255.197.150
 ```
 
-## SSH Connection to Ubuntu Server
 ### SSH Connection to Ubuntu Server
 
 ![SSH Connection Success](screenshots/02-ssh-success.png)
@@ -141,7 +140,7 @@ Splunk was configured to start automatically on boot:
 ```bash
 sudo /opt/splunk/bin/splunk enable boot-start
 
-![Splunk Boot-Start Configuration](screenshots/03-splunk-install-bootstart.png)
+![Splunk Boot-Start](screenshots/03-splunk-install-bootstart.png)
 
 ### Azure NSG Rule for Port 8000
 
@@ -164,9 +163,13 @@ Once authenticated, the Splunk web interface and Search & Reporting app were ava
 The Linux authentication log was added as a monitored input source.
 
 ```text
+
 Source: /var/log/auth.log
+
 Sourcetype: linux_secure
+
 Index: main
+
 Host: splunk-server
 
 ![Linux Auth Log Source Type Configuration](screenshots/07-linux-auth-log-input.png)
@@ -175,20 +178,21 @@ Host: splunk-server
 
 Splunk searches confirmed that events from /var/log/auth.log were being indexed successfully.
 ```spl
+
 index=* host=splunk-server
-```
+
 ![Log Ingestion Verified](screenshots/08-log-ingestion-success.png)
 
 ## Security Events Generated in Splunk
 
 Multiple security-related events were intentionally generated on the Linux host to validate detection and monitoring.
-### Security Events Generated in Splunk
 
 ### User Management Event Generation
 
 User account activity was generated using Linux administration commands such as `useradd`, `passwd`, and `userdel`.
 
-![User Management Commands](screenshots/10-user-management-events.png)
+![User Management](screenshots/10-user-management-events.png)
+
 ## Failed Authentication Detection
 
 A failed privilege escalation attempt was captured and detected through Splunk search results.
