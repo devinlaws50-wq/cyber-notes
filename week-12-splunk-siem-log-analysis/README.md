@@ -71,7 +71,7 @@ This project simulates foundational Security Operations Center (SOC) workflows c
         │ • User management tracking                 │
         └────────────────────────────────────────────┘
 
- Azure VM Deployment
+ ## Azure VM Deployment
 
    Project Objectives
 
@@ -96,7 +96,7 @@ This project simulates foundational Security Operations Center (SOC) workflows c
 
 4. Generate Security Events
 
-Simulated multiple security-related events including:
+## Simulated multiple security-related events including:
 
 * User creation
 * User deletion
@@ -107,7 +107,7 @@ Simulated multiple security-related events including:
 
 5. Build Security Dashboard
 
-Created a Linux Security Monitoring Dashboard in Splunk Dashboard Studio featuring:
+## Created a Linux Security Monitoring Dashboard in Splunk Dashboard Studio featuring:
 
 * Linux authentication monitoring
 * Failed login event tracking
@@ -116,34 +116,34 @@ Created a Linux Security Monitoring Dashboard in Splunk Dashboard Studio featuri
 
 ⸻
 
-Lab Walkthrough
+## Lab Walkthrough
 
-SSH Access to the Ubuntu Server
+## SSH Access to the Ubuntu Server
 
 After deploying the VM, secure remote access was established using SSH with PEM key authentication.
 chmod 400 splunk-server_key.pem
 ssh -i splunk-server_key.pem azureuser@52.255.197.150
 
-SSH Connection to Ubuntu Server
+## SSH Connection to Ubuntu Server
 
-Splunk Boot-Start Configuration
+## Splunk Boot-Start Configuration
 
 Splunk was configured to start automatically on boot:
 sudo /opt/splunk/bin/splunk enable boot-start
 
-Azure NSG Rule for Port 8000
+## Azure NSG Rule for Port 8000
 
 To access the Splunk web interface, an inbound Network Security Group rule was created to allow TCP port 8000.
 
-Splunk Login Page
+## Splunk Login Page
 
 After opening port 8000, the Splunk Enterprise login page was successfully reached in the browser.
 
-Splunk Home Dashboard
+## Splunk Home Dashboard
 
 Once authenticated, the Splunk web interface and Search & Reporting app were available for log ingestion and dashboard creation.
 
-Linux Auth Log Source Type Configuration
+## Linux Auth Log Source Type Configuration
 
 The Linux authentication log was added as a monitored input source, and Splunk identified the source type as linux_secure.
 Source: /var/log/auth.log
@@ -151,96 +151,75 @@ Sourcetype: linux_secure
 Index: main
 Host: splunk-server
 
-Log Ingestion Verification
+## Log Ingestion Verification
 
 Splunk searches confirmed that events from /var/log/auth.log were being indexed successfully.
 index=* host=splunk-server
 
-Security Events Generated in Splunk
+## Security Events Generated in Splunk
 
 Multiple security-related events were intentionally generated on the Linux host to validate detection and monitoring.
 
-User Management Event Generation
+## User Management Event Generation
 
 User account activity was generated with Linux administration commands such as useradd, passwd, and userdel.
 
-Failed Authentication Detection
+## Failed Authentication Detection
 
 A failed privilege escalation attempt was captured and detected through Splunk search results.
 
-Sudo Activity Monitoring
+## Sudo Activity Monitoring
 
 Sudo-related events were captured, including administrative commands and root session activity.
 
-Linux Security Monitoring Dashboard
+## Linux Security Monitoring Dashboard
 
 A dashboard was built in Splunk Dashboard Studio to centralize Linux security event visibility.
 
-Cleaned Dashboard Table
+## Cleaned Dashboard Table
 
 A refined dashboard table was created to improve readability and highlight key fields.
 
-Final Security Dashboard
+## Final Security Dashboard
 
 The final dashboard presents authentication and administrative activity in a SOC-style monitoring view.
 
-Key Splunk Searches
+## Key Splunk Searches
 
-Monitor All Authentication Logs
+## Monitor All Authentication Logs
 source="/var/log/auth.log"
 Displays all authentication-related events being written to /var/log/auth.log.
 
-Monitor Sudo Activity
+## Monitor Sudo Activity
 source="/var/log/auth.log" sudo
 | table _time host source sourcetype _raw
 Tracks sudo-related activity, including privileged commands and root session activity.
 
-Monitor Failed Login Attempts
+## Monitor Failed Login Attempts
 source="/var/log/auth.log" ("FAILED SU" OR "authentication failure" OR "failed password")
 | table _time host _raw
 Used to detect failed authentication attempts and failed privilege escalation events.
 
-Monitor User Management Activity
+## Monitor User Management Activity
 source="/var/log/auth.log" (useradd OR userdel OR passwd)
 | table _time host _raw
 Helps identify account creation, password change, and account deletion activity.
 
-Security Events Observed
+## Security Events Observed
 
 The following Linux security events were successfully detected and visualized:
-Event Type
 
-Description
+| Event Type | Description |
+|---|---|
+| FAILED SU | Failed privilege escalation attempt |
+| authentication failure | Invalid authentication attempt |
+| sudo session opened | Administrative access activity |
+| sudo session closed | End of administrative activity |
+| passwd changed | Password modification event |
+| useradd | User account creation |
+| userdel | User account deletion |
 
-FAILED SU
-
-Failed privilege escalation attempt
-
-authentication failure
-
-Invalid authentication attempt
-
-sudo session opened
-
-Administrative access activity
-
-sudo session closed
-
-End of administrative activity
-
-passwd changed
-
-Password modification event
-
-useradd
-
-User account creation
-
-userdel
-
-User account deletion
-
-Dashboard Features
+## Dashboard Features
 
 The Splunk dashboard provides:
 
@@ -251,22 +230,22 @@ The Splunk dashboard provides:
 * Searchable event tables
 * SOC-style dashboard visualization
 
-Skills Demonstrated
+## Skills Demonstrated
 
-Cloud Security
+## Cloud Security
 
 * Azure virtual machine deployment
 * Cloud networking configuration
 * Public IP and NSG management
 
-Linux Administration
+## Linux Administration
 
 * SSH remote administration
 * User and group management
 * Linux authentication systems
 * Sudo and privilege management
 
-SIEM & Log Analysis
+## SIEM & Log Analysis
 
 * Splunk Enterprise installation
 * Data ingestion and indexing
@@ -274,7 +253,7 @@ SIEM & Log Analysis
 * Security dashboard creation
 * Event correlation and monitoring
 
-Cybersecurity Concepts
+## Cybersecurity Concepts
 
 * Authentication monitoring
 * Privilege escalation monitoring
@@ -284,7 +263,7 @@ Cybersecurity Concepts
 
 ⸻
 
-Lessons Learned
+## Lessons Learned
 
 During this project, I gained hands-on experience with:
 
@@ -299,7 +278,7 @@ This project strengthened my understanding of cloud security operations, Linux a
 
 ⸻
 
-Future Improvements
+## Future Improvements
 
 Potential future enhancements include:
 
@@ -313,7 +292,7 @@ Potential future enhancements include:
 
 ⸻
 
-Conclusion
+## Conclusion
 
 This project successfully demonstrated the deployment of a cloud-based Linux security monitoring environment using Splunk Enterprise on Microsoft Azure.
 
