@@ -139,91 +139,76 @@ Splunk was configured to start automatically on boot:
 
 ```bash
 sudo /opt/splunk/bin/splunk enable boot-start
-
 ![Splunk Boot-Start](screenshots/03-splunk-install-bootstart.png)
 
-### Azure NSG Rule for Port 8000
+Azure NSG Rule for Port 8000
 
 To access the Splunk web interface, an inbound Network Security Group rule was created to allow TCP port 8000.
-
 ![Port 8000 Rule](screenshots/04-port-8000-rule.png)
 
-## Splunk Login Page
+Splunk Login Page
 
 After opening port 8000, the Splunk Enterprise login page was successfully reached in the browser.
 ![Splunk Enterprise Login Page](screenshots/05-splunk-login.png)
 
-## Splunk Home Dashboard
+Splunk Home Dashboard
 
-Once authenticated, the Splunk web interface and Search & Reporting app were available for log ingestion and dashboard creation.
+Once authenticated, the Splunk web interface and Search & Reporting app were available.
 ![Splunk Dashboard Home](screenshots/06-splunk-dashboard.png)
 
-### Linux Auth Log Source Type Configuration
+Linux Auth Log Source Type Configuration
 
 The Linux authentication log was added as a monitored input source.
-
-```text
-
 Source: /var/log/auth.log
-
 Sourcetype: linux_secure
-
 Index: main
-
 Host: splunk-server
-
 ![Linux Auth Log Source Type Configuration](screenshots/07-linux-auth-log-input.png)
 
-## Log Ingestion Verification
+Log Ingestion Verification
 
 Splunk searches confirmed that events from /var/log/auth.log were being indexed successfully.
-```spl
-
 index=* host=splunk-server
-
 ![Log Ingestion Verified](screenshots/08-log-ingestion-success.png)
 
-## Security Events Generated in Splunk
+Security Events Generated in Splunk
 
-Multiple security-related events were intentionally generated on the Linux host to validate detection and monitoring.
+Multiple security-related events were intentionally generated on the Linux host.
 
-### User Management Event Generation
+User Management Event Generation
 
-User account activity was generated using Linux administration commands such as `useradd`, `passwd`, and `userdel`.
-
+User account activity was generated using Linux commands such as useradd, passwd, and userdel.
 ![User Management](screenshots/10-user-management-events.png)
 
-## Failed Authentication Detection
+Failed Authentication Detection
 
-A failed privilege escalation attempt was captured and detected through Splunk search results.
+A failed privilege escalation attempt was detected through Splunk search results.
 ![Failed Authentication Detection](screenshots/11-failed-authentication-detection.png)
 
-## Sudo Activity Monitoring
+Sudo Activity Monitoring
 
 Sudo-related events were captured, including administrative commands and root session activity.
 ![Sudo Activity Monitoring](screenshots/12-sudo-activity-monitoring.png)
 
-## Linux Security Monitoring Dashboard
+Linux Security Monitoring Dashboard
 
-A dashboard was built in Splunk Dashboard Studio to centralize Linux security event visibility.
+A dashboard was built to centralize Linux security event visibility.
 ![Linux Security Monitoring Dashboard](screenshots/13-linux-security-dashboard.png)
 
-## Cleaned Dashboard Table
+Cleaned Dashboard Table
 
-A refined dashboard table was created to improve readability and highlight key fields.
+A refined dashboard table was created to improve readability.
 ![Cleaned Dashboard Table](screenshots/14-cleaned-dashboard-table.png)
 
-## Final Security Dashboard
+Final Security Dashboard
 
-The final dashboard presents authentication and administrative activity in a SOC-style monitoring view.
+The final dashboard presents authentication and administrative activity in a SOC-style view.
 ![Final Security Dashboard](screenshots/15-final-security-dashboard.png)
 
-## Key Splunk Searches
+Key Splunk Searches
 
-## Monitor All Authentication Logs
-```spl
+Monitor All Authentication Logs
 source="/var/log/auth.log"
-```
 Displays all authentication-related events being written to /var/log/auth.log.
 
 ## Monitor Sudo Activity
