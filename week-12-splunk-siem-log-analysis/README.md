@@ -134,20 +134,20 @@ ssh -i splunk-server_key.pem azureuser@52.255.197.150
 
 ![SSH Connection Success](screenshots/02-ssh-success.png)
 
-## Splunk Boot-Start Configuration
+### Splunk Boot-Start Configuration
 
 Splunk was configured to start automatically on boot:
+
 ```bash
 sudo /opt/splunk/bin/splunk enable boot-start
-```
-### Splunk Boot-Start Configuration
 
 ![Splunk Boot-Start Configuration](screenshots/03-splunk-install-bootstart.png)
 
-## Azure NSG Rule for Port 8000
+### Azure NSG Rule for Port 8000
 
 To access the Splunk web interface, an inbound Network Security Group rule was created to allow TCP port 8000.
-![Port 8000 NSG Rule](screenshots/04-port-8000-rule.png)
+
+![Port 8000 Rule](screenshots/04-port-8000-rule.png)
 
 ## Splunk Login Page
 
@@ -159,15 +159,16 @@ After opening port 8000, the Splunk Enterprise login page was successfully reach
 Once authenticated, the Splunk web interface and Search & Reporting app were available for log ingestion and dashboard creation.
 ![Splunk Dashboard Home](screenshots/06-splunk-dashboard.png)
 
-## Linux Auth Log Source Type Configuration
+### Linux Auth Log Source Type Configuration
 
-The Linux authentication log was added as a monitored input source, and Splunk identified the source type as linux_secure.
+The Linux authentication log was added as a monitored input source.
+
 ```text
 Source: /var/log/auth.log
 Sourcetype: linux_secure
 Index: main
 Host: splunk-server
-```
+
 ![Linux Auth Log Source Type Configuration](screenshots/07-linux-auth-log-input.png)
 
 ## Log Ingestion Verification
@@ -183,11 +184,11 @@ index=* host=splunk-server
 Multiple security-related events were intentionally generated on the Linux host to validate detection and monitoring.
 ### Security Events Generated in Splunk
 
-## User Management Event Generation
+### User Management Event Generation
 
-User account activity was generated with Linux administration commands such as useradd, passwd, and userdel.
-![User Management Commands Terminal](screenshots/10-user-management-events.png)
+User account activity was generated using Linux administration commands such as `useradd`, `passwd`, and `userdel`.
 
+![User Management Commands](screenshots/10-user-management-events.png)
 ## Failed Authentication Detection
 
 A failed privilege escalation attempt was captured and detected through Splunk search results.
