@@ -1,0 +1,5 @@
+week-14-azure-sentinel-landing-zone-screenshots-02-ssh-success.png
+week-14-azure-sentinel-landing-zone-screenshots-03-syslog-ssh-events.png
+week-14-azure-sentinel-landing-zone-screenshots-04-failed-ssh-by-ip.png
+week-14-azure-sentinel-landing-zone-screenshots-05-analytic-rule-ssh-success-after-failures.png
+week-14-azure-sentinel-landing-zone:screenshots:01-enable-sentinel-workspace.png
