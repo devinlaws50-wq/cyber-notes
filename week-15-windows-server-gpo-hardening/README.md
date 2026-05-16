@@ -1,173 +1,215 @@
-# Windows Server 2022 Group Policy Hardening in Azure
+# Week 15: Windows Server GPO Hardening Lab in Azure
 
-> **Week 15 Lab** · Systems Administration · Active Directory · Group Policy · Windows Security Hardening  
-> Platform: Microsoft Azure · OS: Windows Server 2022 · Services: AD DS, Group Policy Management
+This lab demonstrates how to build a small Active Directory environment in Azure, create and link Group Policy Objects (GPOs), enforce password and account lockout controls, manage local administrator access with Restricted Groups, and validate policy application on a domain-joined client VM.
 
-![Azure](https://img.shields.io/badge/Azure-Cloud-0078D4?style=for-the-badge&logo=microsoftazure&logoColor=white)
-![Windows Server](https://img.shields.io/badge/Windows%20Server-2022-00A4EF?style=for-the-badge&logo=windows&logoColor=white)
-![Active Directory](https://img.shields.io/badge/Active%20Directory-Domain%20Services-003366?style=for-the-badge)
-![Group Policy](https://img.shields.io/badge/Group%20Policy-Hardening-4B0082?style=for-the-badge)
-![Security](https://img.shields.io/badge/Security-Baseline-success?style=for-the-badge)
+## Lab Overview
 
-## 📌 Project Overview
+The goal of this project was to simulate a lightweight enterprise Windows administration workflow by deploying a domain controller in Azure, creating a client VM in the same virtual network, applying security-focused Group Policy settings, and confirming those policies applied successfully on the client system.
 
-This lab demonstrates the deployment of a Windows Server 2022 virtual machine in Microsoft Azure and its promotion to a Domain Controller using Active Directory Domain Services (AD DS). The lab then applies Group Policy Objects (GPOs) to enforce security controls across a small domain environment.
+## Architecture
 
-The focus of this project is to build foundational Windows systems administration skills by creating a lab domain, organizing users and workstations, implementing password and account lockout policies, restricting local administrator access, and validating policy application.
+```mermaid
+flowchart LR
+    A[MacBook / RDP Admin Access] --> B[Azure Resource Group]
+    B --> C[Azure Virtual Network + Subnet]
+    C --> D[Windows Server 2022 Domain Controller<br/>wk15-dc01]
+    D --> E[Active Directory Domain Services]
+    E --> F[corp.lab.local]
+    F --> G[Users OU]
+    F --> H[Workstations OU]
+    G --> I[test.user1]
+    G --> J[helpdesk.user1]
+    G --> K[Workstation-Local-Admins]
+    F --> L[Default Domain Policy]
+    H --> M[Workstation-Baseline GPO]
+    H --> N[Local-Admin-Control GPO]
+    N --> K
+    C --> O[Domain-Joined Client VM<br/>wk15-client01]
+    H --> O
+```
 
-## 🎯 Objectives
+The environment used one Windows Server VM as the domain controller and a second Windows Server VM as a client-style endpoint for domain join and GPO validation. Both systems were deployed in the same Azure virtual network, and the VNet DNS setting was pointed to the domain controller’s private IP so the client could resolve and join `corp.lab.local` correctly.
 
-- Deploy a Windows Server 2022 VM in Azure
-- Install the Active Directory Domain Services role
-- Promote the server to a new forest and domain
-- Create Organizational Units (OUs), users, and security groups
-- Configure password and account lockout policies
-- Restrict local administrator membership with domain groups
-- Apply workstation security hardening through GPO
-- Validate policy application with `gpupdate` and `gpresult`
+## Objectives
 
-## 🎥 Walkthrough
+- Deploy a Windows Server domain controller in Azure.
+- Create a new Active Directory forest and domain: `corp.lab.local`.
+- Build a simple OU structure for users and workstations.
+- Create test users and a delegated local admin group.
+- Create and link GPOs for workstation hardening and local admin control.
+- Configure password and account lockout policies in the Default Domain Policy.
+- Join a client VM to the domain and validate policy application with `gpupdate` and `gpresult`.
 
-Add your Loom walkthrough link here after recording.
+## Technologies Used
 
-[Watch the walkthrough](#)
-
-## 🛠️ Tools & Technologies
-
-- Microsoft Azure
+- Microsoft Azure Virtual Machines
 - Windows Server 2022
 - Active Directory Domain Services (AD DS)
 - Group Policy Management Console (GPMC)
 - Active Directory Users and Computers (ADUC)
+- Windows Event Viewer
 - Remote Desktop Protocol (RDP)
-- Command Prompt / PowerShell
-- Event Viewer
-- `gpupdate`
-- `gpresult`
 
-## 🧱 Lab Environment
+## Environment Details
 
 | Component | Purpose |
 |---|---|
-| Azure Resource Group | Contains all Week 15 lab resources |
-| Azure Virtual Network | Provides network connectivity for the lab |
-| Windows Server 2022 VM | Serves as the Domain Controller |
-| Active Directory Domain | Centralized identity and policy management |
-| Organizational Units | Organize users and workstations |
-| Group Policy Objects | Apply security controls across the domain |
-| Domain Users / Groups | Used for access control and testing |
-| Domain-joined Client VM | Used to validate policy enforcement |
+| `wk15-dc01` | Domain controller hosting AD DS and Group Policy management |
+| `wk15-client01` | Domain-joined client VM used to validate GPO application |
+| `corp.lab.local` | Active Directory lab domain |
+| `Users` OU | Container for test user accounts and delegated admin group |
+| `Workstations` OU | Container for the joined client computer object |
+| `Workstation-Baseline` | GPO used for workstation security settings |
+| `Local-Admin-Control` | GPO used to manage local administrator membership |
+| `Default Domain Policy` | Domain-level password and account lockout settings |
 
-## ⚙️ Configuration Steps
+## Implementation Steps
 
-### 1. Azure VM Deployment
+### 1. Deployed the domain controller
 
-A Windows Server 2022 VM was deployed in Microsoft Azure using a dedicated resource group, virtual network, subnet, and public IP for remote administration.
+A Windows Server 2022 VM was deployed in Azure and promoted to a domain controller for a new forest named `corp.lab.local` using Active Directory Domain Services.
 
-![Azure VM Deployment](screenshots/01-azure-vm-deployment-overview.png)
+### 2. Built the Active Directory structure
 
-### 2. Install AD DS
+Inside ADUC, the lab domain was organized with two custom OUs: `Users` and `Workstations`. Two test user accounts were created, along with a security group named `Workstation-Local-Admins` for delegated local admin control.
 
-The Active Directory Domain Services role was installed through Server Manager to prepare the server for domain controller promotion.
+### 3. Created and linked Group Policy Objects
 
-![AD DS Installation](screenshots/02-add-roles-ad-ds.png)
+Using the Group Policy Management Console, two GPOs were created and linked to the `Workstations` OU: `Workstation-Baseline` and `Local-Admin-Control`.
 
-### 3. Promote to Domain Controller
+### 4. Configured workstation security settings
 
-The server was promoted to a new forest and configured as the first domain controller for the lab domain.
+The `Workstation-Baseline` GPO was used to define baseline security controls, including audit policy settings such as successful and failed logon auditing. This created a basic hardening layer that could later be validated on the client VM through Group Policy refresh and policy results output.
 
-![DC Promotion](screenshots/03-promote-server-domain-controller.png)
+### 5. Configured delegated local administrator control
 
-### 4. Create Active Directory Structure
+The `Local-Admin-Control` GPO was configured with Restricted Groups, which allows administrators to centrally control membership of sensitive local groups on domain-joined systems. The domain group `Workstation-Local-Admins` was added so it could be used to manage local administrator access on workstations in a controlled and repeatable way.
 
-Organizational Units for users and workstations were created, along with test user accounts and security groups for administrative control.
+### 6. Configured password and account lockout policy
 
-![Active Directory Structure](screenshots/04-active-directory-users-computers.png)
+The Default Domain Policy was updated with domain-wide password and lockout controls, including password complexity, minimum password length, password history, account lockout threshold, and lockout duration. These settings were configured at the domain policy level because password and account lockout policies are domain account policies rather than workstation-only settings.
 
-![Domain Users and Groups](screenshots/10-domain-users-and-groups-created.png)
+### 7. Deployed and joined the client VM
 
-### 5. Configure Group Policy
+A second VM, `wk15-client01`, was deployed in the same Azure virtual network and subnet as the domain controller. The Azure VNet DNS setting was changed to use the domain controller’s private IP so the client could resolve the Active Directory domain and join `corp.lab.local` successfully.
 
-Group Policy Management was used to create and link GPOs that support domain security and workstation hardening.
+### 8. Moved the client into the Workstations OU
 
-![GPO Management Console](screenshots/05-group-policy-management-console.png)
+After the domain join, the client computer object was moved into the `Workstations` OU so the linked workstation GPOs would apply to it.
 
-![Workstations OU Linked GPO](screenshots/11-workstations-ou-linked-gpo.png)
+### 9. Validated policy application
 
-### 6. Apply Security Hardening Policies
+On the client VM, `gpupdate /force` was used to immediately refresh Group Policy instead of waiting for the normal background cycle. Policy application was then validated with `gpresult /r`, which showed the applied GPOs on the domain-joined client.
 
-Security settings were configured to improve baseline protection for domain-joined systems.
+## Screenshots
 
-![GPO Security Settings](screenshots/06-gpo-security-settings.png)
+### Domain Controller Build and Promotion
 
-![Password Policy Settings](screenshots/14-password-policy-settings.png)
+![Screenshot 01](./screenshots/01-azure-vm-overview.png)
+*Azure VM overview for the Windows Server domain controller.*
 
-![Account Lockout Policy Settings](screenshots/15-account-lockout-policy-settings.png)
+![Screenshot 02](./screenshots/02-server-manager-add-roles.png)
+*Server Manager with Active Directory Domain Services installation workflow.*
 
-### 7. Restrict Local Administrator Access
+![Screenshot 03](./screenshots/03-promote-server-domain-controller.png)
+*Domain controller promotion process for the new `corp.lab.local` forest.*
 
-A domain security group was used to control which users receive local administrator access on managed systems.
+### Active Directory Structure
 
-![Local Admin Group Policy](screenshots/07-local-admin-group-policy.png)
+![Screenshot 04](./screenshots/04-active-directory-users-computers.png)
+*ADUC showing the `corp.lab.local` domain structure with `Users` and `Workstations` OUs.*
 
-### 8. Update and Validate Policy Application
+![Screenshot 10](./screenshots/10-domain-users-and-groups-created.png)
+*Test users and the `Workstation-Local-Admins` group created in Active Directory.*
 
-Policy updates were forced and then validated using built-in Windows administrative tools.
+### Group Policy Configuration
 
-![gpupdate Force](screenshots/08-gpupdate-force.png)
+![Screenshot 05](./screenshots/05-group-policy-management-console.png)
+*Group Policy Management Console with workstation-linked GPOs.*
 
-![gpresult Policy Results](screenshots/09-gpresult-policy-results.png)
+![Screenshot 06](./screenshots/06-gpo-security-settings.png)
+*Security settings configured in the `Workstation-Baseline` GPO.*
 
-![Event Viewer Policy Validation](screenshots/12-event-viewer-policy-validation.png)
+![Screenshot 07](./screenshots/07-local-admin-group-policy.png)
+*Restricted Groups configuration for delegated local administrator management.*
 
-### 9. Domain Join Test
+### Client Join and Validation
 
-A client virtual machine was joined to the domain to test the applied policies and confirm central management was functioning as expected.
+![Screenshot 13](./screenshots/13-client-vm-domain-join.png)
+*Client VM successfully joined to the `corp.lab.local` domain.*
 
-![Client VM Domain Join](screenshots/13-client-vm-domain-join.png)
+![Screenshot 11](./screenshots/11-workstations-ou-linked-gpo.png)
+*Client computer object placed in the `Workstations` OU where workstation GPOs are linked.*
 
-## 🔐 GPOs Implemented
+![Screenshot 08](./screenshots/08-gpupdate-force.png)
+*Forced Group Policy refresh on the client using `gpupdate /force`.*
 
-| GPO Name | Purpose | Target |
-|---|---|---|
-| Default Domain Policy Updates | Enforce password and account lockout settings | Domain |
-| Workstation Baseline | Apply security hardening settings to domain-joined systems | Workstations OU |
-| Local Admin Control | Restrict local Administrators group membership | Workstations OU |
+![Screenshot 09](./screenshots/09-gpresult-policy-results.png)
+*`gpresult /r` output showing applied Group Policy Objects on the client.*
 
-## 🗺️ Architecture Diagram
+![Screenshot 12](./screenshots/12-event-viewer-policy-validation.png)
+*Event Viewer used to validate Group Policy processing and related system activity on the client.*
 
-The following diagram shows the Azure infrastructure and Active Directory components used in this lab.
+### Domain Policy Controls
 
-![Week 15 Architecture Diagram](diagrams/week-15-architecture.png)
+![Screenshot 14](./screenshots/14-password-policy-settings.png)
+*Password policy configuration in the Default Domain Policy.*
 
-## 🧠 Key Skills Demonstrated
+![Screenshot 15](./screenshots/15-account-lockout-policy-settings.png)
+*Account lockout policy configuration in the Default Domain Policy.*
 
+## Key Security Concepts Demonstrated
+
+### Group Policy Centralization
+
+This project shows how Windows administrators can define security settings once and apply them consistently to domain-joined systems through linked GPOs instead of managing each machine manually.
+
+### OU-Based Scope of Management
+
+By separating computers into a `Workstations` OU, the lab demonstrates how policy scope can be controlled through Active Directory structure.
+
+### Restricted Groups for Privileged Access Control
+
+Restricted Groups provides a centralized way to define group membership for security-sensitive groups and reduce inconsistent local administrator assignments across systems.
+
+### Domain Account Protections
+
+Password history, complexity requirements, and account lockout thresholds help reduce weak password usage and limit repeated failed logon attempts.
+
+### Policy Validation and Troubleshooting
+
+`gpupdate`, `gpresult`, and Event Viewer provide a practical validation workflow for confirming that policies were applied and troubleshooting when they were not.
+
+## Challenges and Troubleshooting
+
+Several practical issues were encountered and resolved during the build:
+
+- The Group Policy Management tree initially appeared collapsed, which made OU-linked workflows harder to find until the domain node was expanded.
+- Azure networking had to be adjusted so the client VM used the domain controller as its DNS server; without this, domain join would not work correctly.
+- The client computer object needed to be moved into the `Workstations` OU before workstation-linked GPOs would apply.
+- Restricted Groups required careful placement of the delegated group to avoid unintentionally overwriting local group membership.
+
+## Outcome
+
+The lab successfully demonstrated an end-to-end Windows administration workflow in Azure: domain controller deployment, Active Directory structure creation, GPO management, local admin control, domain policy enforcement, client domain join, and Group Policy validation.
+
+## Skills Demonstrated
+
+- Azure VM deployment and networking
 - Windows Server administration
-- Active Directory deployment and management
-- Group Policy design and implementation
-- Security hardening and access control
-- User, group, and OU management
-- Domain-based administration
-- Policy validation and troubleshooting
+- Active Directory Domain Services
+- Organizational Unit design
+- Group Policy creation and linking
+- Restricted Groups configuration
+- Password and account lockout policy configuration
+- Domain join troubleshooting
+- Group Policy validation with `gpupdate`, `gpresult`, and Event Viewer
 
-## ✅ Outcome
+## Next Improvements
 
-This lab demonstrates hands-on experience deploying and securing a Windows-based Active Directory environment in Azure. It highlights practical systems administration skills and shows how Group Policy can be used to apply centralized security controls in a domain environment.
+Possible next iterations for this lab include:
 
-## 📸 Screenshots
-
-- Azure VM deployment overview
-- AD DS role installation
-- Domain controller promotion
-- Active Directory Users and Computers
-- Group Policy Management Console
-- GPO security settings
-- Local admin restriction policy
-- `gpupdate /force` results
-- `gpresult` policy results
-- Domain users and groups created
-- Workstations OU with linked GPO
-- Event Viewer policy validation
-- Client VM domain join
-- Password policy settings
-- Account lockout policy settings
+- Adding more workstation hardening settings such as Defender Firewall, advanced audit policy, and user rights assignments.
+- Testing additional users and delegated admin scenarios against the local admin control GPO.
+- Exporting GPO reports and documenting policy settings in a change-control style format.
+- Extending the environment with additional client systems or a second OU to demonstrate policy inheritance and filtering.
