@@ -1,0 +1,15 @@
+01-azure-vm-deployment-overview.png
+02-add-roles-ad-ds.png
+03-promote-server-domain-controller.png
+04-active-directory-users-computers.png
+05-group-policy-management-console.png
+06-gpo-security-settings.png
+07-local-admin-group-policy.png
+08-gpupdate-force.png
+09-gpresult-policy-results.png
+10-domain-users-and-groups-created.png
+11-workstations-ou-linked-gpo.png
+12-event-viewer-policy-validation.png
+13-client-vm-domain-join.png
+14-password-policy-settings.png
+15-account-lockout-policy-settings.png
