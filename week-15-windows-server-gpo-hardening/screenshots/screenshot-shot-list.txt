@@ -1,5 +1,5 @@
-01-azure-vm-deployment-overview.png
-02-add-roles-ad-ds.png
+01-azure-vm-overview.png
+02-server-manager-add-roles.png
 03-promote-server-domain-controller.png
 04-active-directory-users-computers.png
 05-group-policy-management-console.png

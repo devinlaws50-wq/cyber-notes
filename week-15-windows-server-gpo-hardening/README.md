@@ -4,7 +4,7 @@ This lab demonstrates how to build a small Active Directory environment in Azure
 
 ## Loom Walkthrough
 
-[Add your Loom walkthrough link here](PASTE_YOUR_LOOM_LINK_HERE)
+[Add your Loom walkthrough link here](https://www.loom.com/share/6d6c27c993254649a2ca5d64d586128b)
 
 ## Lab Overview
 
