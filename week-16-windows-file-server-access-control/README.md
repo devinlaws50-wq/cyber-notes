@@ -8,11 +8,11 @@
 
 ## Overview
 
-This lab configured departmental SMB shares on `wk16-filesrv01` using a layered access model based on both share permissions and NTFS permissions.
+This lab configured departmental SMB shares on `wk16-filesrv01` using both share permissions and NTFS permissions to control access.
 
-In Windows, effective access is determined by the most restrictive combination of share and NTFS permissions, so both levels were configured deliberately for HR, IT, and Public access control.
+The file server was joined to the domain, placed in the appropriate organizational unit, and prepared with a departmental folder structure under `C:\Data`.
 
-The environment used Active Directory security groups to grant department-based access instead of assigning permissions directly to individual users. This approach is easier to manage, scales better, and aligns with common Windows file server administration practices.
+Active Directory security groups were then used to assign access to HR, IT, and Public resources. Access was validated from the client VM with authorized and unauthorized user accounts, and auditing was enabled to capture file access events in Event Viewer.
 
 ## Objectives
 
@@ -30,25 +30,6 @@ The environment used Active Directory security groups to grant department-based 
 | Domain Controller | `wk15-dc01` | Active Directory users and groups |
 | File Server | `wk16-filesrv01` | SMB shares, NTFS permissions, auditing |
 | Client VM | `wk15-client01` | Access testing with domain users |
-
-## Folder and Share Design
-
-The file server used a root folder at `C:\Data` with three departmental subfolders. Each folder was shared individually so access could be controlled by department and validated through the client VM.
-
-```text
-C:\Data
-├── HR
-├── IT
-└── Public
-```
-
-### Share Names
-
-| Folder Path | Share Name | Intended Access |
-|---|---|---|
-| `C:\Data\HR` | `HR` | HR users modify, staff denied |
-| `C:\Data\IT` | `IT` | IT users modify, staff denied |
-| `C:\Data\Public` | `Public` | Authenticated users read/write |
 
 ## Architecture Diagram
 
@@ -78,58 +59,128 @@ flowchart LR
     F --> M
 ```
 
+## Folder and Share Design
+
+The file server used a root folder at `C:\Data` with three departmental subfolders. Each folder was shared individually so access could be controlled by department and validated through the client VM.
+
+```text
+C:\Data
+├── HR
+├── IT
+└── Public
+```
+
+### Share Names
+
+| Folder Path | Share Name | Intended Access |
+|---|---|---|
+| `C:\Data\HR` | `HR` | HR users modify, staff denied |
+| `C:\Data\IT` | `IT` | IT users modify, staff denied |
+| `C:\Data\Public` | `Public` | Authenticated users read/write |
+
+## Build and Configuration Screenshots
+
+### 1. Azure file server VM overview
+
+This screenshot shows the deployed Azure virtual machine used as the Windows file server for the lab.
+
+![Azure file server VM overview](screenshots/01-azure-file-server-vm-overview.png)
+
+### 2. File server domain join
+
+This screenshot confirms that `wk16-filesrv01` was joined to the domain successfully.
+
+![File server domain join](screenshots/02-file-server-domain-join.png)
+
+### 3. Servers OU with file server
+
+This screenshot shows the file server object placed in the appropriate Active Directory organizational unit.
+
+![Servers OU with file server](screenshots/03-servers-ou-with-file-server.png)
+
+### 4. Data folder structure
+
+This screenshot shows the `C:\Data` folder structure with the departmental folders created for the shares.
+
+![Data folder structure](screenshots/04-data-folder-structure.png)
+
+### 5. AD security groups created
+
+This screenshot shows the Active Directory security groups created to manage departmental access.
+
+![AD security groups created](screenshots/05-ad-security-groups-created.png)
+
+### 6. Group membership for HR modify
+
+This screenshot shows the membership configuration for the HR modify access group.
+
+![Group membership HR modify](screenshots/06-group-membership-hr-modify.png)
+
 ## Permission Model
 
 ### HR Share
 
-- Share permissions were configured so authorized users could access the share across the network.
-- NTFS permissions on `C:\Data\HR` were assigned to HR-related groups such as `HR-Read` and `HR-Modify`.
-- `corp\hr.user1` successfully created, edited, and deleted files in the HR share after share-level write access was corrected.
+The HR share was configured with both share and NTFS permissions so only the correct HR group members could access and modify data.
+
+![HR share permissions](screenshots/07-hr-share-permissions.png)
+
+![HR NTFS permissions](screenshots/08-hr-ntfs-permissions.png)
 
 ### IT Share
 
-- The IT share followed the same design pattern as HR.
-- Authorized IT users were allowed to modify content through group-based permissions.
-- Unauthorized staff users were denied access by design because they did not belong to the permitted group set.
+The IT share followed the same design pattern as the HR share. Authorized IT users were granted access through group-based permission assignment.
+
+![IT share permissions](screenshots/09-it-share-permissions.png)
+
+![IT NTFS permissions](screenshots/10-it-ntfs-permissions.png)
 
 ### Public Share
 
-- The Public share was configured for collaborative use by authenticated users.
-- To allow file creation and editing, both share permissions and NTFS had to allow write-capable access such as Change at the share layer and Modify at the NTFS layer.
+The Public share was configured for broader collaboration. To support file creation and editing, share permissions and NTFS permissions both had to allow write-capable access.
+
+![Public share permissions](screenshots/11-public-share-permissions.png)
 
 ## Access Testing
 
 Testing was performed from the client VM using domain user accounts over SMB paths to the file server.
 
-### Successful Access
+### Successful HR access
 
-- `corp\hr.user1` successfully accessed `\\wk16-filesrv01\HR` and created, edited, and deleted a test file.
-- `corp\it.user1` successfully accessed `\\wk16-filesrv01\IT` and performed the same modify actions.
-- Public access was validated separately after updating Public share and NTFS permissions to support file creation and editing.
+`corp\hr.user1` successfully accessed the HR share and performed file operations as expected.
 
-### Denied Access
+![HR user access success](screenshots/12-hr-user-access-success.png)
 
-- `corp\staff.user1` was denied access to `\\wk16-filesrv01\HR`.
-- `corp\staff.user1` was denied access to `\\wk16-filesrv01\IT`.
-- These denials confirmed that department shares were not open to unauthorized users.
+### Successful IT access
 
-## Screenshots
+`corp\it.user1` successfully accessed the IT share and performed modify actions.
 
-| Screenshot | Description |
-|---|---|
-| `12-hr-user-access-success.png` | `corp\hr.user1` successfully accessed the HR share |
-| `13-it-user-access-success.png` | `corp\it.user1` successfully accessed the IT share |
-| `14-staff-user-access-denied.png` | `corp\staff.user1` denied access to restricted shares |
-| `15-public-share-read-access.png` | Public share access validated |
-| `16-event-viewer-audit-validation.png` | Security log showing object access auditing |
+![IT user access success](screenshots/13-it-user-access-success.png)
+
+### Denied staff access
+
+`corp\staff.user1` was denied access to restricted departmental shares, confirming that unauthorized access was blocked correctly.
+
+![Staff user access denied](screenshots/14-staff-user-access-denied.png)
+
+### Public share validation
+
+Public share access was validated after updating permissions to support the intended level of access.
+
+![Public share read access](screenshots/15-public-share-read-access.png)
 
 ## Auditing Configuration
 
-Object access auditing was enabled on the HR folder to monitor file activity. Windows Security logging can record object access events such as operations performed on folders and files when auditing is configured on the target object and the relevant policy category is active.
+Object access auditing was enabled on the HR folder to monitor file activity. After access testing was performed, the resulting security events were reviewed in Event Viewer on the file server.
 
-Auditing entries were added through the folder’s **Advanced Security Settings** on the **Auditing** tab. After `corp\hr.user1` created and deleted a test file in the HR share, Security log events were visible in Event Viewer on `wk16-filesrv01` as object access events, including Event ID 4662 in the captured validation screenshot.
+![Event Viewer audit validation](screenshots/16-event-viewer-audit-validation.png)
+
+The captured audit log confirmed that file access activity was being recorded after auditing was configured on the target folder.
 
 ## Troubleshooting Notes
+
+### README issue in VS Code
+
+The original `README.md` problem was caused by accidentally creating a directory named `README.md` instead of a file. Once that folder was removed and replaced with an actual Markdown file, editing in VS Code worked normally.
 
 ### HR share not visible in Shares list
 
@@ -152,11 +203,10 @@ Public access required changes at both layers:
 - Group-based permission assignment is easier to manage than user-by-user access control.
 - A read-only share permission can silently block write operations even when NTFS looks correct.
 - Auditing must be configured on the folder object and then validated through the Security log.
-
-## Commands Used
-
-Administrative tasks can also be completed through PowerShell, including folder creation, SMB share creation, and NTFS permission assignment. This is useful for documenting repeatable infrastructure changes in a lab environment.
+- GitHub README screenshots only render when the images are embedded with relative Markdown image paths.
 
 ## Conclusion
 
-This lab successfully implemented a Windows file server with departmental shares, role-based access through Active Directory groups, validation of authorized and unauthorized access, and object access auditing through Event Viewer. The final configuration demonstrated practical administration of SMB shares using layered Windows security controls.
+This lab successfully implemented a Windows file server with departmental shares, role-based access through Active Directory groups, validation of authorized and unauthorized access, and object access auditing through Event Viewer.
+
+The final configuration demonstrated practical administration of SMB shares using layered Windows security controls, along with access testing and audit validation in a domain environment.
