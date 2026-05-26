@@ -8,13 +8,15 @@
 
 ## Overview
 
-This lab configured departmental SMB shares on `wk16-filesrv01` using a layered access model based on both share permissions and NTFS permissions. In Windows, effective access is determined by the most restrictive combination of share and NTFS permissions, so both levels were configured deliberately for HR, IT, and Public access control.
+This lab configured departmental SMB shares on `wk16-filesrv01` using a layered access model based on both share permissions and NTFS permissions.
+
+In Windows, effective access is determined by the most restrictive combination of share and NTFS permissions, so both levels were configured deliberately for HR, IT, and Public access control.
 
 The environment used Active Directory security groups to grant department-based access instead of assigning permissions directly to individual users. This approach is easier to manage, scales better, and aligns with common Windows file server administration practices.
 
 ## Objectives
 
-- Create departmental folders under `C:\\Data`
+- Create departmental folders under `C:\Data`
 - Publish folders as SMB shares
 - Assign access using AD security groups
 - Validate access as HR, IT, and Staff users
@@ -31,10 +33,10 @@ The environment used Active Directory security groups to grant department-based 
 
 ## Folder and Share Design
 
-The file server used a root folder at `C:\\Data` with three departmental subfolders. Each folder was shared individually so access could be controlled by department and validated through the client VM.
+The file server used a root folder at `C:\Data` with three departmental subfolders. Each folder was shared individually so access could be controlled by department and validated through the client VM.
 
 ```text
-C:\\Data
+C:\Data
 ├── HR
 ├── IT
 └── Public
@@ -44,29 +46,29 @@ C:\\Data
 
 | Folder Path | Share Name | Intended Access |
 |---|---|---|
-| `C:\\Data\\HR` | `HR` | HR users modify, staff denied |
-| `C:\\Data\\IT` | `IT` | IT users modify, staff denied |
-| `C:\\Data\\Public` | `Public` | Authenticated users read/write |
+| `C:\Data\HR` | `HR` | HR users modify, staff denied |
+| `C:\Data\IT` | `IT` | IT users modify, staff denied |
+| `C:\Data\Public` | `Public` | Authenticated users read/write |
 
 ## Architecture Diagram
 
 ```mermaid
 flowchart LR
-    A[Active Directory<br/>wk15-dc01] --> B[Security Groups]
+    A[Active Directory / wk15-dc01] --> B[Security Groups]
     B --> C[HR-Read]
     B --> D[HR-Modify]
     B --> E[IT-Modify]
     B --> F[Authenticated Users / Domain Users]
 
-    G[Client VM<br/>wk15-client01] --> H[corp\\\\hr.user1]
-    G --> I[corp\\\\it.user1]
-    G --> J[corp\\\\staff.user1]
+    G[Client VM / wk15-client01] --> H[corp\hr.user1]
+    G --> I[corp\it.user1]
+    G --> J[corp\staff.user1]
 
-    H --> K[\\\\\\\\wk16-filesrv01\\\\HR]
-    I --> L[\\\\\\\\wk16-filesrv01\\\\IT]
-    J --> M[\\\\\\\\wk16-filesrv01\\\\Public]
+    H --> K[HR Share]
+    I --> L[IT Share]
+    J --> M[Public Share]
 
-    N[File Server<br/>wk16-filesrv01] --> K
+    N[File Server / wk16-filesrv01] --> K
     N --> L
     N --> M
 
@@ -81,8 +83,8 @@ flowchart LR
 ### HR Share
 
 - Share permissions were configured so authorized users could access the share across the network.
-- NTFS permissions on `C:\\Data\\HR` were assigned to HR-related groups such as `HR-Read` and `HR-Modify`.
-- `corp\\hr.user1` successfully created, edited, and deleted files in the HR share after share-level write access was corrected.
+- NTFS permissions on `C:\Data\HR` were assigned to HR-related groups such as `HR-Read` and `HR-Modify`.
+- `corp\hr.user1` successfully created, edited, and deleted files in the HR share after share-level write access was corrected.
 
 ### IT Share
 
@@ -101,23 +103,23 @@ Testing was performed from the client VM using domain user accounts over SMB pat
 
 ### Successful Access
 
-- `corp\\hr.user1` successfully accessed `\\\\wk16-filesrv01\\HR` and created, edited, and deleted a test file.
-- `corp\\it.user1` successfully accessed `\\\\wk16-filesrv01\\IT` and performed the same modify actions.
+- `corp\hr.user1` successfully accessed `\\wk16-filesrv01\HR` and created, edited, and deleted a test file.
+- `corp\it.user1` successfully accessed `\\wk16-filesrv01\IT` and performed the same modify actions.
 - Public access was validated separately after updating Public share and NTFS permissions to support file creation and editing.
 
 ### Denied Access
 
-- `corp\\staff.user1` was denied access to `\\\\wk16-filesrv01\\HR`.
-- `corp\\staff.user1` was denied access to `\\\\wk16-filesrv01\\IT`.
+- `corp\staff.user1` was denied access to `\\wk16-filesrv01\HR`.
+- `corp\staff.user1` was denied access to `\\wk16-filesrv01\IT`.
 - These denials confirmed that department shares were not open to unauthorized users.
 
 ## Screenshots
 
 | Screenshot | Description |
 |---|---|
-| `12-hr-user-access-success.png` | `corp\\hr.user1` successfully accessed the HR share |
-| `13-it-user-access-success.png` | `corp\\it.user1` successfully accessed the IT share |
-| `14-staff-user-access-denied.png` | `corp\\staff.user1` denied access to restricted shares |
+| `12-hr-user-access-success.png` | `corp\hr.user1` successfully accessed the HR share |
+| `13-it-user-access-success.png` | `corp\it.user1` successfully accessed the IT share |
+| `14-staff-user-access-denied.png` | `corp\staff.user1` denied access to restricted shares |
 | `15-public-share-read-access.png` | Public share access validated |
 | `16-event-viewer-audit-validation.png` | Security log showing object access auditing |
 
@@ -125,7 +127,7 @@ Testing was performed from the client VM using domain user accounts over SMB pat
 
 Object access auditing was enabled on the HR folder to monitor file activity. Windows Security logging can record object access events such as operations performed on folders and files when auditing is configured on the target object and the relevant policy category is active.
 
-Auditing entries were added through the folder’s **Advanced Security Settings** on the **Auditing** tab. After `corp\\hr.user1` created and deleted a test file in the HR share, Security log events were visible in Event Viewer on `wk16-filesrv01` as object access events, including Event ID 4662 in the captured validation screenshot.
+Auditing entries were added through the folder’s **Advanced Security Settings** on the **Auditing** tab. After `corp\hr.user1` created and deleted a test file in the HR share, Security log events were visible in Event Viewer on `wk16-filesrv01` as object access events, including Event ID 4662 in the captured validation screenshot.
 
 ## Troubleshooting Notes
 
@@ -140,6 +142,7 @@ The main cause was share permissions set too low. A user can still be blocked fr
 ### Public share inaccessible
 
 Public access required changes at both layers:
+
 - Share permissions needed `Authenticated Users` with Change
 - NTFS needed `Authenticated Users` or another inclusive group with Modify
 
@@ -147,7 +150,7 @@ Public access required changes at both layers:
 
 - Share permissions and NTFS permissions must be evaluated together.
 - Group-based permission assignment is easier to manage than user-by-user access control.
-- A Read-only share permission can silently block write operations even when NTFS looks correct.
+- A read-only share permission can silently block write operations even when NTFS looks correct.
 - Auditing must be configured on the folder object and then validated through the Security log.
 
 ## Commands Used
