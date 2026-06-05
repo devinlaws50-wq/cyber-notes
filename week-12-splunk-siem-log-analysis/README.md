@@ -65,7 +65,7 @@ This lab simulates foundational Security Operations Center (SOC) workflows commo
 │   │                                             │   │
 │   │   ┌──────────────────────────────────────┐  │   │
 │   │   │ splunk-server (Ubuntu 24.04 LTS VM) │  │   │
-│   │   │ Public IP: 52.255.197.150           │  │   │
+│   │   │ Public IP: <redacted-public-ip>           │  │   │
 │   │   │ Private IP: 10.0.1.5                │  │   │
 │   │   │                                      │  │   │
 │   │   │ ┌──────────────────────────────────┐ │  │   │
@@ -144,7 +144,7 @@ After deploying the VM, secure remote access was established using SSH with PEM 
 
 ```bash
 chmod 400 splunk-server_key.pem
-ssh -i splunk-server_key.pem azureuser@52.255.197.150
+ssh -i splunk-server_key.pem azureuser@<redacted-public-ip>
 ```
 
 ![SSH Connection Success](./screenshots/02-ssh-success.png)
@@ -361,6 +361,25 @@ During this project, I gained hands-on experience with:
 - Troubleshooting ingestion and visualization issues
 
 This project strengthened my understanding of cloud security operations, Linux administration, SIEM workflows, and real-world security monitoring.
+
+
+## ✅ What This Proves
+
+- Deployed a cloud-hosted SIEM (Splunk Enterprise) on Azure and ingested Linux authentication logs from `/var/log/auth.log`
+- Built SOC-style dashboards surfacing failed logins, sudo activity, privilege escalation attempts, and Linux user management events
+- Wrote SPL (Search Processing Language) queries to detect and visualize security-relevant authentication patterns
+- Demonstrated foundational Security Operations Center (SOC) workflows: log ingestion, event correlation, and dashboard-driven monitoring
+- Configured Azure NSGs to restrict Splunk and SSH access to authorized IPs only — applying least-privilege network controls alongside the SIEM deployment
+
+## 🔐 Security Relevance
+
+This lab directly maps to SOC Analyst and Security Engineer job responsibilities: building detection visibility into authentication events, identifying failed and successful access patterns, and creating dashboards that surface threat indicators. SIEM deployment and log analysis are core skills in any security operations role.
+
+## 📚 Lessons Learned / Next Improvements
+
+- Add Splunk alerting rules to trigger notifications on threshold-based events (e.g., 5+ failed logins in 60 seconds)
+- Integrate multiple Linux hosts as log forwarders to simulate a multi-system SOC environment
+- Extend detection to cover `/var/log/syslog` and application-level logs for broader visibility
 
 ---
 
