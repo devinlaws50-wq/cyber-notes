@@ -197,6 +197,20 @@ Public access required changes at both layers:
 - Share permissions needed `Authenticated Users` with Change
 - NTFS needed `Authenticated Users` or another inclusive group with Modify
 
+
+## ✅ What This Proves
+
+- Configured departmental SMB file shares with layered NTFS and share permissions, applying explicit deny policies for cross-department access
+- Assigned access using Active Directory security groups rather than individual user accounts — demonstrating scalable, role-based access control design
+- Validated authorized and unauthorized access scenarios from a domain-joined client VM using multiple user identities
+- Enabled object access auditing via Group Policy and verified security events in Windows Event Viewer — demonstrating Windows security monitoring skills
+- Diagnosed and resolved permission conflicts caused by the interaction between share-level and NTFS-level effective access — a common real-world troubleshooting scenario
+
+## 🔐 Security Relevance
+
+File server access control and auditing are core Windows security administration responsibilities. This lab demonstrates least-privilege file access design, AD group-based authorization, and event log monitoring — all of which appear directly in Systems Administrator and Windows Security Engineer job descriptions. Object access auditing also supports compliance requirements (SOX, HIPAA, etc.) that mandate file access logging.
+
+
 ## Key Lessons Learned
 
 - Share permissions and NTFS permissions must be evaluated together.
