@@ -14,7 +14,7 @@ Transition from deploying cloud infrastructure to governing and securing it. Thi
 
 ## 🎥 Walkthrough
 
-[![Watch the Walkthrough on Loom](https://img.shields.io/badge/Loom-Watch%20Walkthrough-625DF5?logo=loom&logoColor=white)](https://loom.com)
+[![Watch the Walkthrough on Loom](https://img.shields.io/badge/Loom-Watch%20Walkthrough-625DF5?logo=loom&logoColor=white)](https://www.loom.com/share/placeholder)
 
 ---
 
@@ -241,6 +241,24 @@ week-11-azure-governance/
     ├── week-11-06-policy-assigned.jpg
     └── week-11-11-policy-enforced.jpg
 ```
+
+
+## ✅ What This Proves
+
+- Implemented Azure RBAC with least-privilege role assignments scoped at the resource group level, restricting a simulated junior developer to read-only access
+- Enforced Azure Policy to block unauthorized VM SKU deployments, demonstrating policy-driven compliance controls
+- Configured Cost Management budgets with automated email alerting at 80% threshold — a standard cloud governance requirement
+- Demonstrated end-to-end cloud governance controls that reduce attack surface, enforce compliance baselines, and support least-privilege access principles
+
+## 🔐 Security Relevance
+
+Azure governance controls directly map to the "cloud posture management" responsibilities found in Systems Administrator and Cloud Security Engineer job descriptions. RBAC scoping, policy enforcement, and budget guardrails are all components of a mature cloud security baseline.
+
+## 📚 Lessons Learned / Next Improvements
+
+- Extend the RBAC model with custom roles for more granular permission scoping
+- Add Azure Blueprints to bundle RBAC, Policy, and budget settings into a reusable governance package
+- Integrate with Microsoft Defender for Cloud to surface policy compliance scores
 
 ---
 
