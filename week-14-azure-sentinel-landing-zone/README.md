@@ -50,7 +50,7 @@ flowchart LR
     G --> H[Scheduled Analytics Rule<br/>Success after multiple failures]
     H --> I[Microsoft Defender Portal<br/>Analytics]
 
-    J[Source IP<br/>89.45.90.254] -->|Observed in Syslog| B
+    J[Source IP<br/>203.0.113.45] -->|Observed in Syslog| B
 ```
 
 ## ⚙️ Implementation Walkthrough
@@ -70,7 +70,7 @@ Multiple failed password attempts were created first, followed by a successful S
 Example successful connection used during validation:
 
 ```bash
-ssh -i ~/.ssh/id_ed25519 labadmin@20.29.109.215
+ssh -i ~/.ssh/id_ed25519 labadmin@<redacted-public-ip>
 hostname
 exit
 ```
@@ -173,6 +173,25 @@ This lab tied together infrastructure, telemetry, and detection engineering in a
 ## ✅ Validation
 
 The lab was considered complete after Syslog showed both failed and successful SSH events, the correlation query returned the expected row for the source IP and user, and the scheduled analytics rule validated successfully in the Defender portal.
+
+
+## ✅ What This Proves
+
+- Enabled Microsoft Sentinel on an existing Log Analytics workspace and validated Syslog ingestion via Azure Monitor Agent — demonstrating SIEM onboarding and data connector configuration
+- Wrote KQL queries to detect SSH brute force patterns and correlate failed login attempts with successful authentication — a real detection engineering workflow
+- Created a scheduled analytics rule in Microsoft Defender portal that alerts on "success after multiple failures" — directly mirrors production SOC detection tuning
+- Generated controlled SSH authentication telemetry to validate detection logic end-to-end — demonstrates test-driven security validation
+- Provisioned the underlying infrastructure with Terraform, tying IaC skills directly to a security use case
+
+## 🔐 Security Relevance
+
+This lab maps directly to Security Operations Center (SOC) Analyst and Detection Engineer responsibilities: configuring SIEM data ingestion, writing detection logic in KQL, and validating that analytics rules fire on real-world attack patterns. The SSH brute force → success correlation is a standard detection use case in any enterprise security operations playbook.
+
+## 📚 Lessons Learned / Next Improvements
+
+- Add Microsoft Sentinel Watchlists for known-bad IPs to enrich alerts with threat intelligence context
+- Expand detection coverage to include sudo privilege escalation events from the same Syslog source
+- Build a Sentinel workbook to visualize authentication trends and anomaly patterns over time
 
 ## 🧹 Cleanup
 
