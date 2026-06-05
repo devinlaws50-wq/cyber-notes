@@ -3,3 +3,21 @@
 **/*.tfstate.*
 **/terraform.tfvars
 .DS_Store
+
+# Environment and secrets
+*.env
+.env
+.env.*
+
+# SSH keys and certificates
+*.pem
+*.key
+id_rsa
+id_rsa*
+id_ed25519
+id_ed25519*
+*.ppk
+
+# Other credentials
+*.p12
+*.pfx
