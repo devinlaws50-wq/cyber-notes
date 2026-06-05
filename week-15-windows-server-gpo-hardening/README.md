@@ -193,6 +193,20 @@ Several practical issues were encountered and resolved during the build:
 - The client computer object needed to be moved into the `Workstations` OU before workstation-linked GPOs would apply.
 - Restricted Groups required careful placement of the delegated group to avoid unintentionally overwriting local group membership.
 
+
+## ✅ What This Proves
+
+- Deployed a Windows Server Active Directory forest from scratch in Azure and configured a production-style OU structure for users and workstations
+- Implemented Group Policy Objects for workstation security hardening: password complexity, account lockout thresholds, and baseline security settings
+- Managed delegated local administrator access using Restricted Groups GPO — a standard enterprise access control technique
+- Validated policy application end-to-end with `gpupdate /force`, `gpresult /r`, and Event Viewer — demonstrating Windows administration troubleshooting skills
+- Demonstrated the full identity administration lifecycle: domain setup, user provisioning, group management, policy enforcement, and validation
+
+## 🔐 Security Relevance
+
+GPO-based hardening is a foundational Windows security skill that directly maps to Systems Administrator and Identity Security roles. Password policies, account lockout controls, and restricted local admin access are all standard CIS Benchmark and NIST controls for endpoint hardening. This lab shows the ability to apply those controls in a real Active Directory environment.
+
+
 ## Outcome
 
 The lab successfully demonstrated an end-to-end Windows administration workflow in Azure: domain controller deployment, Active Directory structure creation, GPO management, local admin control, domain policy enforcement, client domain join, and Group Policy validation.
