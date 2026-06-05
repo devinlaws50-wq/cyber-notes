@@ -267,6 +267,25 @@ week-13-azure-landing-zone/
 
 ---
 
+
+## ✅ What This Proves
+
+- Provisioned a segmented Azure landing zone using Terraform IaC across three separate resource groups (management, networking, workload) — demonstrating enterprise-grade infrastructure design
+- Configured NSG rules to enforce least-privilege SSH access restricted to a specific source IP, applying network-level security controls
+- Integrated Azure Monitor with a centralized Log Analytics workspace for observability and auditability across the environment
+- Troubleshot and resolved DNS, NSG, and VM provisioning failures end-to-end — demonstrating real-world cloud infrastructure debugging skills
+- Produced portfolio-ready technical documentation with architecture diagrams and sequential screenshots
+
+## 🔐 Security Relevance
+
+Landing zone design is a foundational skill for cloud security engineering. Segmented resource groups enforce blast radius limits, NSG rules reduce attack surface, and centralized logging is a prerequisite for SIEM integration and compliance. This lab mirrors the setup phase of a production cloud security deployment.
+
+## 📚 Lessons Learned / Next Improvements
+
+- Parameterize the Terraform configuration further to support multi-environment deployments (dev/staging/prod)
+- Layer in Azure Policy at the landing zone level to enforce tagging and location restrictions
+- Connect the Log Analytics workspace to Microsoft Sentinel for detection and alerting
+
 ## Core Commands Used
 
 ```bash
@@ -284,5 +303,5 @@ ssh -i ~/.ssh/id_rsa labadmin@<public-ip>
 ## Author
 
 **Devin Laws**  
-Help Desk Analyst | Cloud & Cybersecurity Transition  
+Systems Administrator | Cloud Security Engineering  
 [LinkedIn](https://linkedin.com/in/dlaws2030) | [GitHub](https://github.com/devinlaws50-wq/cyber-notes)
