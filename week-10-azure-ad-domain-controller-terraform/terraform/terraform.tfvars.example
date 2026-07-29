@@ -1,6 +1,4 @@
-yourname       = "devin"
-location       = "eastus"
-admin_password = "UndeniableOne123!!"
-dsrm_password  = "UndeniableOne1234!!"
-domain_name    = "corp.devinlaws.com"
-domain_netbios = "CORP"
+location = "eastus"
+
+admin_password = "REPLACE_WITH_SECURE_ADMIN_PASSWORD"
+dsrm_password  = "REPLACE_WITH_SECURE_DSRM_PASSWORD"

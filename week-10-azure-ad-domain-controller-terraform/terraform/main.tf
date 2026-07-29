@@ -105,10 +105,7 @@ resource "azurerm_windows_virtual_machine" "main" {
     version   = "latest"
   }
 
-  additional_unattend_content {
-    content = "<AutoLogon><Password><Value>${var.admin_password}</Value></Password><Enabled>true</Enabled><LogonCount>1</LogonCount><Username>adadmin</Username></AutoLogon>"
-    setting = "AutoLogon"
-  }
+
 
   tags = var.tags
 }
@@ -120,8 +117,8 @@ resource "azurerm_virtual_machine_extension" "ad_setup" {
   type                 = "CustomScriptExtension"
   type_handler_version = "1.10"
 
-  settings = jsonencode({
-    commandToExecute = "powershell -ExecutionPolicy Unrestricted -Command \"Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools; Import-Module ADDSDeployment; Install-ADDSForest -DomainName '${var.domain_name}' -DomainNetbiosName '${var.domain_netbios}' -ForestMode 'WinThreshold' -DomainMode 'WinThreshold' -InstallDns:$true -SafeModeAdministratorPassword (ConvertTo-SecureString '${var.dsrm_password}' -AsPlainText -Force) -Force:$true\""
+  protected_settings = jsonencode({
+    commandToExecute = "powershell -ExecutionPolicy Bypass -Command \"Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools; Import-Module ADDSDeployment; Install-ADDSForest -DomainName '${var.domain_name}' -DomainNetbiosName '${var.domain_netbios}' -ForestMode 'WinThreshold' -DomainMode 'WinThreshold' -InstallDns:$true -SafeModeAdministratorPassword (ConvertTo-SecureString '${var.dsrm_password}' -AsPlainText -Force) -Force:$true\""
   })
 
   tags = var.tags

@@ -284,13 +284,12 @@ You (or anyone else) can reuse this lab to stand up a fresh AD DS environment in
 
    Edit `terraform.tfvars` and set values appropriate for your environment:
 
-   ```hcl
-   yourname       = "your-name-or-alias"
-   location       = "eastus"
-   admin_password = "YourSecurePassword123!"
-   dsrm_password  = "YourSecureDSRMPassword123!"
-   domain_name    = "corp.yourdomain.com"
-   domain_netbios = "CORP"
+yourname       = "your-name-or-alias"
+location       = "eastus"
+admin_password = "REPLACE_WITH_SECURE_ADMIN_PASSWORD"
+dsrm_password  = "REPLACE_WITH_SECURE_DSRM_PASSWORD"
+domain_name    = "corp.yourdomain.com"
+domain_netbios = "CORP"
    ```
 
    - Ensure passwords meet Azure's complexity requirements.  
