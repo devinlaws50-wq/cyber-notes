@@ -1,4 +1,0 @@
-location = "eastus"
-
-admin_password = "REPLACE_WITH_SECURE_ADMIN_PASSWORD"
-dsrm_password  = "REPLACE_WITH_SECURE_DSRM_PASSWORD"
