@@ -1,0 +1,17 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfplan
+
+# Credentials
+*.pem
+*.key
+.env
+
+# macOS
+.DS_Store
+
+# Editor backups
+*.bak
