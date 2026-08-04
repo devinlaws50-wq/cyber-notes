@@ -1,0 +1,28 @@
+# Terraform working directory
+.terraform/
+
+# Terraform state
+*.tfstate
+*.tfstate.*
+
+# Local variable files
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Terraform plans
+*.tfplan
+tfplan
+
+# Credentials and environment files
+*.pem
+*.key
+.env
+.env.*
+
+# Operating system files
+.DS_Store
+
+# Editor backups
+*.bak
+*~

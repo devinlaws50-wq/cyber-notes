@@ -1,0 +1,3 @@
+location                     = "centralus"
+resource_group_name          = "rg-landing-mgmt-devin"
+log_analytics_workspace_name = "log-landing-devin"
