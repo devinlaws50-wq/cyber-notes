@@ -35,10 +35,13 @@ resource "azurerm_linux_virtual_machine" "app" {
   resource_group_name = azurerm_resource_group.workloads.name
   size                = "Standard_D2s_v3"
 
-  admin_username = var.admin_username
-  admin_password = var.admin_password
+  admin_username                  = var.admin_username
+  disable_password_authentication = true
 
-  disable_password_authentication = false
+  admin_ssh_key {
+    username   = var.admin_username
+    public_key = var.ssh_public_key
+  }
 
   network_interface_ids = [
     azurerm_network_interface.app.id

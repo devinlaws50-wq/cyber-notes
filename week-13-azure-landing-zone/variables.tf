@@ -14,10 +14,9 @@ variable "admin_username" {
   type        = string
 }
 
-variable "admin_password" {
-  description = "Admin password for the lab VM"
+variable "ssh_public_key" {
+  description = "SSH public key used to access the Linux VM"
   type        = string
-  sensitive   = true
 }
 
 variable "allowed_ip" {
