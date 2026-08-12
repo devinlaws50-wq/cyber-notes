@@ -67,12 +67,11 @@ LinkedIn: linkedin.com/in/dlaws2030 · Location: Hollywood, FL
 
 ## Currently Building
 
-- Terraform validation pipelines with GitHub Actions
-- Additional Microsoft Sentinel detection and investigation use cases
+- Additional Microsoft Sentinel detections and investigation workflows
 - Azure infrastructure automation and governance projects
+- Expanded KQL and SPL detection engineering
 - Penetration-testing lab using Kali Linux and DVWA
-- Continued development toward cloud infrastructure and security roles
-
+- Additional Infrastructure as Code security controls
 ---
 
 ## Connect
